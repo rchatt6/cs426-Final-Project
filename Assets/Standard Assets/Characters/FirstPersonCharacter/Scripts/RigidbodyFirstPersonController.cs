@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -8,6 +10,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+        
+
         [Serializable]
         public class MovementSettings
         {
@@ -20,35 +24,42 @@ namespace UnityStandardAssets.Characters.FirstPerson
             public AnimationCurve SlopeCurveModifier = new AnimationCurve(new Keyframe(-90.0f, 1.0f), new Keyframe(0.0f, 1.0f), new Keyframe(90.0f, 0.0f));
             [HideInInspector] public float CurrentTargetSpeed = 8f;
 
+
 #if !MOBILE_INPUT
             private bool m_Running;
 #endif
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
-	            if (input == Vector2.zero) return;
+	            if (input == Vector2.zero)
+                {
+                    return;
+                }
+                    
 				if (input.x > 0 || input.x < 0)
 				{
 					//strafe
 					CurrentTargetSpeed = StrafeSpeed;
-				}
+                }
 				if (input.y < 0)
 				{
 					//backwards
 					CurrentTargetSpeed = BackwardSpeed;
-				}
+                }
 				if (input.y > 0)
 				{
 					//forwards
 					//handled last as if strafing and moving forward at the same time forwards speed should take precedence
 					CurrentTargetSpeed = ForwardSpeed;
-				}
+                }
 #if !MOBILE_INPUT
 	            if (Input.GetKey(RunKey))
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
-	            }
+
+                    
+                }
 	            else
 	            {
 		            m_Running = false;
@@ -123,6 +134,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+
         }
 
 
@@ -168,6 +180,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
                     m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
                     m_Jumping = true;
+
+                    //Added
+                    FirstPersonController.anim.SetBool("isJumping", true);
                 }
 
                 if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
@@ -259,6 +274,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_PreviouslyGrounded && m_IsGrounded && m_Jumping)
             {
                 m_Jumping = false;
+
+                //Added
+                FirstPersonController.anim.SetBool("isJumping", false);
             }
         }
     }

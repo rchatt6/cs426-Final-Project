@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{21128669-4AFA-FA3E-9E29-FD8D1CEE0E3F}</ProjectGuid>
+    <ProjectGuid>{A77E6BCB-E445-415B-9473-8443EC5CB841}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPath.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathAnimator.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathControlPoint.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathDelay.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathDelayList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathEvent.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathEventList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathFOV.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathFOVList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathOrientation.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathOrientationList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathPoint.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathPointList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathSpeed.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathSpeedList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathTilt.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\CameraPathTiltList.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\Enum\CameraPathColours.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\Util\CPMath.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\Util\CameraPathPreviewSupport.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\Util\UnityVersionWrapper.cs" />
+     <Compile Include="Assets\CameraPath3\Scripts\Util\XMLVariableConverter.cs" />
+     <Compile Include="Assets\CharacterController.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
@@ -69,20 +92,6 @@
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\SepiaToneEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\TwirlEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\VortexEffect.cs" />
-     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
-     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
-     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
-     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
-     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
-     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
-     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
-     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
-     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
-     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
-     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
-     <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
-     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
-     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VortexEffect.shader" />
@@ -90,16 +99,17 @@
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseAndGrain.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\DLAA.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\frag_ao.cginc" />
+     <None Include="Assets\CameraPath3\versionHistory.txt" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowEffectDownsample.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CameraMotionBlurDX11.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VignettingShader.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
+     <None Include="Assets\CameraPath3\3.1x Upgrade readme.txt" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SSAOShader.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\Blend.shader" />
-     <None Include="Assets\PolygonWar\Materials\Shader\Particle VertexLit Blended_Backface.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\SSAA.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ConvertDepth.shader" />
@@ -125,12 +135,12 @@
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\Bokeh34.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionEffect.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\FisheyeShader.shader" />
-     <None Include="Assets\PolygonApocalypse\Materials\Misc\Shader\POLYGON_Zombies.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfField34.shader" />
+     <None Include="Assets\CameraPath3\readme.txt" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
@@ -154,36 +164,34 @@
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Luminance.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
-     <None Include="Assets\PolygonApocalypse\Materials\Misc\Shader\SkyGradient.shader" />
-     <None Include="Assets\PolygonApocalypse\Materials\Misc\Shader\POLYGON_Triplanar.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -361,21 +369,6 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>D:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
- </Reference>
- <Reference Include="ProBuilderCore-Unity5">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
- </Reference>
- <Reference Include="ProBuilderMeshOps-Unity5">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
- </Reference>
- <Reference Include="KdTreeLib">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
- </Reference>
- <Reference Include="pb_Stl">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
- </Reference>
- <Reference Include="Poly2Tri">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>D:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -734,7 +727,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{4097F449-8C5C-4B73-8CB7-81DD9DD636E6}</Project>
+      <Project>{BA5FB6CD-64CE-F6D8-3195-24D7DAADD82A}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>

@@ -42,6 +42,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        //Added
+        public static Animator anim;
+
         // Use this for initialization
         private void Start()
         {
@@ -55,6 +58,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+            //Added
+            //anim = gameObject.GetComponent<Animator>();
+            anim = gameObject.GetComponentInChildren<Animator>();
         }
 
 
@@ -74,11 +81,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
+
+                //Added
+                anim.SetBool("isJumping", false);
+                
             }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;
             }
+
+            
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
@@ -119,6 +132,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
+
+                    //Added
+                    anim.SetBool("isJumping", true);
                 }
             }
             else
@@ -147,6 +163,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_StepCycle += (m_CharacterController.velocity.magnitude + (speed*(m_IsWalking ? 1f : m_RunstepLenghten)))*
                              Time.fixedDeltaTime;
+                //Added
+                anim.SetBool("isWalking", true);
             }
 
             if (!(m_StepCycle > m_NextStep))
@@ -154,7 +172,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
 
+            //Added
+            //FirstPersonController.anim.SetBool("isWalking", true);
+
             m_NextStep = m_StepCycle + m_StepInterval;
+
+            //Added
+            /*if (m_CharacterController.velocity.magnitude <= 0.1)
+            {
+                anim.SetBool("isWalking", false);
+            }
+            else
+            {
+                anim.SetBool("isWalking", true);
+            }*/
 
             PlayFootStepAudio();
         }
@@ -208,6 +239,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
             bool waswalking = m_IsWalking;
+
+            //Added
+            //FirstPersonController.anim.SetBool("isWalking", false);
+            if (!m_IsWalking)
+            {
+                anim.SetBool("isWalking", true);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
+            }
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
