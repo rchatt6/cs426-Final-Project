@@ -1,0 +1,5 @@
+Aakash Kotak - The Great Race!
+
+Schedule and deliverable:
+Basic terrain (creating the islands).....Sat by midnight (estimate 2-3 hours)
+Basic water / death collision boundary (scripts to cause death when character model touches the water).....Sun by noon (estimate 4 hours)

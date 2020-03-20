@@ -1,0 +1,5 @@
+Allen Breyer - The Great Race!
+
+Schedule and deliverable:
+Basic character model with movement (walking, running, jumping, etc).....Mon by 6pm (estimate 3hrs)
+Basic "zombie" obstacles (moves towards player, can shoot them)..........Tue by 6pm (estimate 3hrs)
