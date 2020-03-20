@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A77E6BCB-E445-415B-9473-8443EC5CB841}</ProjectGuid>
+    <ProjectGuid>{21128669-4AFA-FA3E-9E29-FD8D1CEE0E3F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -77,7 +77,6 @@
      <Compile Include="Assets\CameraPath3\Scripts\Util\CameraPathPreviewSupport.cs" />
      <Compile Include="Assets\CameraPath3\Scripts\Util\UnityVersionWrapper.cs" />
      <Compile Include="Assets\CameraPath3\Scripts\Util\XMLVariableConverter.cs" />
-     <Compile Include="Assets\CharacterController.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
@@ -92,6 +91,9 @@
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\SepiaToneEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\TwirlEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\VortexEffect.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\TriggerPlayerDamage.cs" />
+     <Compile Include="Assets\Zombie_Motion\Scripts\ChasePlayer.cs" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VortexEffect.shader" />
@@ -167,31 +169,31 @@
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-ProjectCopy/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>D:/Program Files/Unity/Hub/Editor/2019.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -727,7 +729,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{BA5FB6CD-64CE-F6D8-3195-24D7DAADD82A}</Project>
+      <Project>{4097F449-8C5C-4B73-8CB7-81DD9DD636E6}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
