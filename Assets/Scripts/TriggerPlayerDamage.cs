@@ -6,7 +6,8 @@ public class TriggerPlayerDamage : MonoBehaviour
 {
 
     public int health = 100;
-    int damage = 20;
+    int waterDamage = 20;
+    //int zombieDamage = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class TriggerPlayerDamage : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            health -= damage;
+            health -= waterDamage;
             Debug.Log(health);
             if (health <= 0)
             {
@@ -26,5 +27,24 @@ public class TriggerPlayerDamage : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+        /*
+        if(this.tag == "DeathPlane")
+        {
+            health -= waterDamage;
+            if (health <= 0)
+            {
+                Destroy(other.gameObject);
+            }
+        }
+
+        if(this.tag == "Zombie")
+        {
+            health -= zombieDamage;
+            if (health <= 0)
+            {
+                Destroy(other.gameObject);
+            }
+        }
+        */
     }
 }

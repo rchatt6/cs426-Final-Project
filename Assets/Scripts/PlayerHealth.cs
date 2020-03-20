@@ -19,18 +19,17 @@ public class PlayerHealth : MonoBehaviour
         healthbar.value = CalculateHealth();
     }
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if()
-    }*/
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "DeathPlane")
         {
             DealDamage(20);
         }
+
+        /*if (other.tag == "Zombie")
+        {
+            DealDamage(50);
+        }*/
     }
 
     void DealDamage(float damageValue)
