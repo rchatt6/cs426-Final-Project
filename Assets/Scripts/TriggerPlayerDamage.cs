@@ -4,27 +4,54 @@ using UnityEngine;
 
 public class TriggerPlayerDamage : MonoBehaviour
 {
+    public float CurrentHealth { get; set; }
+    public float MaxHealth { get; set; }
+    public float CurrentArmor { get; set; }
+    public float MaxArmor { get; set; }
+    public bool hasArmor = true;
 
-    public int health = 100;
-    int damage = 20;
+    public float health = 100;
+    public float armor = 90;
+    public float damage = 20;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(health);
+        MaxHealth = 100;
+        CurrentHealth = MaxHealth;
+
+        MaxArmor = 90;
+        CurrentArmor = MaxArmor;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            health -= damage;
-            Debug.Log(health);
-            if (health <= 0)
+            if (hasArmor && CurrentHealth == 100)
             {
-                Debug.Log("you died" + health);
+                DealArmorDamage(30);
+            }
+
+            if (!hasArmor || CurrentArmor <= 0)
+            {
+                DealDamage(20);
+            }
+            
+            if (CurrentHealth <= 0)
+            {
                 Destroy(other.gameObject);
             }
         }
+    }
+
+    void DealArmorDamage(float damageValue)
+    {
+        CurrentArmor -= damageValue;
+    }
+
+    void DealDamage(float damageValue)
+    {
+        CurrentHealth -= damageValue;
     }
 }
