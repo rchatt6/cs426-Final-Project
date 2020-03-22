@@ -13,7 +13,9 @@ public class PlayerHealth : MonoBehaviour
 
     public Slider healthbar;
     public Slider armorbar;
-    //public Slider staminabar;
+
+    public Text healthText;
+    public Text armorText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,43 +25,41 @@ public class PlayerHealth : MonoBehaviour
         MaxArmor = 90f;
         CurrentArmor = MaxArmor;
 
+        healthText.text = CurrentHealth + "/" + MaxHealth;
+        armorText.text = CurrentArmor + "/" + MaxArmor;
+
         healthbar.value = CalculateHealth();
         armorbar.value = CalculateArmor();
     }
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if()
-    }*/
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "DeathPlane")
+        if (other.tag == "DeathPlane")
         {
             if (hasArmor && CurrentHealth == 100)
             {
                 DealArmorDamage(30);
             }
 
-            if(!hasArmor || CurrentArmor <= 0)
+            if (!hasArmor || CurrentArmor <= 0)
             {
                 DealDamage(20);
             }
-            //DealDamage(20);
         }
     }
-    
+
     void DealArmorDamage(float damageValue)
     {
         CurrentArmor -= damageValue;
         armorbar.value = CalculateArmor();
+        armorText.text = CurrentArmor + "/" + MaxArmor;
     }
 
     void DealDamage(float damageValue)
     {
         CurrentHealth -= damageValue;
         healthbar.value = CalculateHealth();
+        healthText.text = CurrentHealth + "/" + MaxHealth;
 
         if (CurrentHealth <= 0)
             Die();
