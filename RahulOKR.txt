@@ -1,0 +1,5 @@
+Rahul Chatterjee - The Great Race!
+
+Schedule and deliverable:
+Bridge pieces (long block pieces).....Mon by 6pm (estimate 2hrs)
+Script to carry bridge piece and drop it in the water (floats in water)..........Tue by 6pm (estimate 3hrs)
