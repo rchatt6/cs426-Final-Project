@@ -9,7 +9,7 @@ namespace CPA
         public static void HandlesArrowCap(int controlId, Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_6_OR_NEWER
-            UnityEditor.Handles.ArrowHandleCap(controlId, position, rotation, size, EventType.repaint);
+            UnityEditor.Handles.ArrowHandleCap(controlId, position, rotation, size, EventType.Repaint);
 #else
             UnityEditor.Handles.ArrowCap(controlId, position, rotation, size);
 #endif
@@ -18,7 +18,7 @@ namespace CPA
         public static void HandlesDotCap(int controlId, Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_6_OR_NEWER
-            UnityEditor.Handles.DotHandleCap(controlId, position, rotation, size, EventType.repaint);
+            UnityEditor.Handles.DotHandleCap(controlId, position, rotation, size, EventType.Repaint);
 #else
             UnityEditor.Handles.DotCap(controlId, position, rotation, size);
 #endif
@@ -27,7 +27,7 @@ namespace CPA
         public static void HandlesSphereCap(int controlId, Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_6_OR_NEWER
-            UnityEditor.Handles.SphereHandleCap(controlId, position, rotation, size, EventType.repaint);
+            UnityEditor.Handles.SphereHandleCap(controlId, position, rotation, size, EventType.Repaint);
 #else
             UnityEditor.Handles.SphereCap(controlId, position, rotation, size);
 #endif
@@ -36,7 +36,7 @@ namespace CPA
         public static void HandlesCircleCap(int controlId, Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_6_OR_NEWER
-            UnityEditor.Handles.CircleHandleCap(controlId, position, rotation, size, EventType.repaint);
+            UnityEditor.Handles.CircleHandleCap(controlId, position, rotation, size, EventType.Repaint);
 #else
             UnityEditor.Handles.CircleCap(controlId, position, rotation, size);
 #endif
