@@ -49,7 +49,10 @@ public class TriggerPlayerDamage : MonoBehaviour
             
             if (PlayerHealth.CurrentHealth <= 0)
             {
-                Destroy(other.gameObject);
+                //Debug.Log(other.transform.GetChild(0).gameObject.name);
+                //Destroy(other.gameObject);
+                other.transform.position = new Vector3(24.34f, 5.19f, 8.75f);
+                //Destroy(other.transform.GetChild(1).gameObject);
             }
         }
     }
