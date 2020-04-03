@@ -43,8 +43,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        private float maxStamina = 500f;
-        private float currentStamina;
+        //private float maxStamina = 500f;
+        //private float currentStamina;
 
         private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
         private Coroutine regen;
@@ -70,7 +70,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            currentStamina = maxStamina;
+            StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
 
@@ -265,17 +265,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
+            
+
+            //Debug.Log(StaminaBar.currentStamina);
+
+            if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.currentStamina > 1)
+            {
+                StaminaBar.instance.UseStamina(1);
+                //StaminaBar.UseStamina(1);
+
+                m_IsWalking = false;
+            }
+            else
+            {
+                m_IsWalking = true;
+            }
+
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                StaminaBar.instance.UseStamina(1);
-                useStamina(1);
-                m_IsWalking = false;
-            }
-            
             // normalize input if it exceeds 1 in combined length:
             if (m_Input.sqrMagnitude > 1)
             {
@@ -291,18 +300,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-        public void useStamina(float amount)
+        /*public void useStamina(float amount)
         {
-            if (currentStamina - amount >= 0)
+            if (StaminaBar.currentStamina - amount >= 0)
             {
-                currentStamina -= amount;
+                StaminaBar.currentStamina -= amount;
 
                 if (regen != null)
                     StopCoroutine(regen);
 
                 regen = StartCoroutine(RegenStamina());
             }
-            if(currentStamina <= 0)
+            if(StaminaBar.currentStamina <= 0)
             {
                 m_IsWalking = true;
                 Debug.Log("Not enough stamina");
@@ -313,13 +322,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             yield return new WaitForSeconds(2);
 
-            while (currentStamina < maxStamina)
+            while (StaminaBar.currentStamina < StaminaBar.maxStamina)
             {
-                currentStamina += maxStamina / 500;
+                StaminaBar.currentStamina += StaminaBar.maxStamina / 500;
                 yield return regenTick;
             }
             regen = null;
-        }
+        }*/
 
 
         private void RotateView()

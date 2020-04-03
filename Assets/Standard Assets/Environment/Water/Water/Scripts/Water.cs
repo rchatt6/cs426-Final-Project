@@ -205,6 +205,10 @@ namespace UnityStandardAssets.Water
             {
                 return;
             }
+            else if (mat.name != "WaterProDaytime")
+            {
+                return;
+            }
 
             Vector4 waveSpeed = mat.GetVector("WaveSpeed");
             float waveScale = mat.GetFloat("_WaveScale");

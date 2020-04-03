@@ -8,8 +8,8 @@ public class StaminaBar : MonoBehaviour
 
     public Slider staminaBar;
 
-    private float maxStamina = 500f;
-    private float currentStamina;
+    public static float maxStamina = 500f;
+    public static float currentStamina;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
@@ -53,7 +53,7 @@ public class StaminaBar : MonoBehaviour
 
         while (currentStamina < maxStamina)
         {
-            currentStamina += maxStamina / 500;
+            currentStamina += maxStamina / 100;
             staminaBar.value = currentStamina;
             yield return regenTick;
         }
