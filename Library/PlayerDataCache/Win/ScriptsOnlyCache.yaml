@@ -29,12 +29,6 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.PostProcessing.Vignette
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -96,51 +90,51 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11434}
+      Script: {instanceID: 11488}
     - Class: 114
-      Script: {instanceID: 11454}
+      Script: {instanceID: 11508}
     - Class: 114
-      Script: {instanceID: 11474}
+      Script: {instanceID: 11528}
     - Class: 114
-      Script: {instanceID: 11568}
+      Script: {instanceID: 11622}
     - Class: 114
-      Script: {instanceID: 11578}
+      Script: {instanceID: 11632}
     - Class: 114
-      Script: {instanceID: 11660}
+      Script: {instanceID: 11714}
     - Class: 114
-      Script: {instanceID: 11706}
+      Script: {instanceID: 11760}
     - Class: 114
-      Script: {instanceID: 11852}
+      Script: {instanceID: 11906}
     - Class: 114
-      Script: {instanceID: 11884}
+      Script: {instanceID: 11938}
     - Class: 114
-      Script: {instanceID: 12094}
+      Script: {instanceID: 12148}
     - Class: 114
-      Script: {instanceID: 12112}
+      Script: {instanceID: 12166}
     - Class: 114
-      Script: {instanceID: 12182}
+      Script: {instanceID: 12236}
     - Class: 114
-      Script: {instanceID: 12490}
+      Script: {instanceID: 12544}
     - Class: 114
-      Script: {instanceID: 12494}
+      Script: {instanceID: 12548}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 12592}
     - Class: 114
-      Script: {instanceID: 12686}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 12950}
+      Script: {instanceID: 13004}
     - Class: 114
-      Script: {instanceID: 13300}
+      Script: {instanceID: 13352}
     - Class: 114
-      Script: {instanceID: 13592}
+      Script: {instanceID: 13644}
     - Class: 114
-      Script: {instanceID: 13638}
+      Script: {instanceID: 13690}
     - Class: 114
-      Script: {instanceID: 13670}
+      Script: {instanceID: 13722}
     - Class: 114
-      Script: {instanceID: 13734}
+      Script: {instanceID: 13786}
     - Class: 114
-      Script: {instanceID: 13772}
+      Script: {instanceID: 13824}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -1499,5 +1493,5 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Output/The
+  playerPath: C:/Users/spyma/Desktop/UIC/CS 426/CS 426 Final Project/The Great Race!/Aakash/Aakash-Branch/Build/The
     Great Race!.exe
