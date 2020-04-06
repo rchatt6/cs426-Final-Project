@@ -78,6 +78,9 @@
      <Compile Include="Assets\CameraPath3\Scripts\Util\UnityVersionWrapper.cs" />
      <Compile Include="Assets\CameraPath3\Scripts\Util\XMLVariableConverter.cs" />
      <Compile Include="Assets\CharacterController.cs" />
+     <Compile Include="Assets\FPSWeaponPack01\Scripts\CasingScript.cs" />
+     <Compile Include="Assets\FPSWeaponPack01\Scripts\WeaponControl.cs" />
+     <Compile Include="Assets\FPSWeaponPack01\Scripts\WeaponScript.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\BoatController.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityFlat.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityRealist.cs" />
