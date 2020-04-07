@@ -5,12 +5,16 @@ ScriptsOnlyBuild:
     - UnityStandardAssets.Characters.FirstPerson.FirstPersonController
     - UnityStandardAssets.Water.Water
     Assembly-CSharp.dll:
+    - CasingScript
     - ChasePlayer
     - FloatingGameEntityFlat
     - FloatingGameEntityRealist
+    - FollowPlayer
     - Pickup
     - PlayerHealth
     - TriggerPlayerDamage
+    - WeaponScript
+    - skyBoxRotate
     Unity.Postprocessing.Runtime.dll:
     - UnityEngine.Rendering.PostProcessing.AmbientOcclusion
     - UnityEngine.Rendering.PostProcessing.AutoExposure
@@ -29,12 +33,6 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.PostProcessing.Vignette
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -114,33 +112,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11884}
     - Class: 114
-      Script: {instanceID: 12094}
+      Script: {instanceID: 11990}
     - Class: 114
-      Script: {instanceID: 12112}
+      Script: {instanceID: 12064}
     - Class: 114
-      Script: {instanceID: 12182}
+      Script: {instanceID: 12098}
     - Class: 114
-      Script: {instanceID: 12490}
+      Script: {instanceID: 12116}
     - Class: 114
-      Script: {instanceID: 12494}
+      Script: {instanceID: 12146}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 12188}
     - Class: 114
-      Script: {instanceID: 12686}
+      Script: {instanceID: 12498}
     - Class: 114
-      Script: {instanceID: 12950}
+      Script: {instanceID: 12502}
     - Class: 114
-      Script: {instanceID: 13300}
+      Script: {instanceID: 12546}
     - Class: 114
-      Script: {instanceID: 13592}
+      Script: {instanceID: 12694}
     - Class: 114
-      Script: {instanceID: 13638}
+      Script: {instanceID: 12958}
     - Class: 114
-      Script: {instanceID: 13670}
+      Script: {instanceID: 13072}
     - Class: 114
-      Script: {instanceID: 13734}
+      Script: {instanceID: 13310}
     - Class: 114
-      Script: {instanceID: 13772}
+      Script: {instanceID: 13602}
+    - Class: 114
+      Script: {instanceID: 13648}
+    - Class: 114
+      Script: {instanceID: 13680}
+    - Class: 114
+      Script: {instanceID: 13744}
+    - Class: 114
+      Script: {instanceID: 13782}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -168,6 +174,10 @@ ScriptsOnlyBuild:
     - Class: 195
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 205
       Script: {instanceID: 0}
@@ -550,6 +560,12 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 8e261dfc3fdaab1fd40168eb6c47fe57
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FollowPlayer
+  - hash:
+      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -580,6 +596,12 @@ ScriptsOnlyBuild:
     className: CameraPathDelay
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CasingScript
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -608,6 +630,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FloatingGameEntityFlat
+  - hash:
+      serializedVersion: 2
+      Hash: 9364f1081cdec0b46b8b97ec3e07d131
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: skyBoxRotate
   - hash:
       serializedVersion: 2
       Hash: 7e6ed836cbaa230e56d6a2bbae1b9bb5
@@ -746,6 +774,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp-firstpass.dll
     namespaceName: UnityStandardAssets._2D
     className: CameraFollow
+  - hash:
+      serializedVersion: 2
+      Hash: bdb543f00cfdd2a0f8a0204226d6a635
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponControl
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -1112,6 +1146,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp-firstpass.dll
     namespaceName: 
     className: AlphaButtonClickMask
+  - hash:
+      serializedVersion: 2
+      Hash: 33a396f5f6eac8c2850a5408251fe70b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponScript
   - hash:
       serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
@@ -1499,5 +1539,5 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Users/abreyer3/Documents/Unity3D Projects/cs426-Final-Project/Output/The
-    Great Race!.exe
+  playerPath: C:/Users/Aakash Kotak/Downloads/cs426-Final-Project-abreyer3/cs426-Final-Project-abreyer3/Output
+    Folder/The Great Race!.exe

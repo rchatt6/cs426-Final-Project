@@ -74,7 +74,7 @@ public class ChasePlayer : MonoBehaviour
     private void FindTarget()
     {
         agent.SetDestination(player.transform.position);
-        Debug.Log(frame2);
+        //Debug.Log(frame2);
 
         if (frame >= 150)
         {

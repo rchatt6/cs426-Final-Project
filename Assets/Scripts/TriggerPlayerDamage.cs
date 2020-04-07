@@ -16,6 +16,7 @@ public class TriggerPlayerDamage : MonoBehaviour
 
     private AudioSource m_AudioSource;
     [SerializeField] private AudioClip hurtSound;
+    private GameObject respawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,8 @@ public class TriggerPlayerDamage : MonoBehaviour
             {
                 //Debug.Log(other.transform.GetChild(0).gameObject.name);
                 //Destroy(other.gameObject);
-                other.transform.position = new Vector3(386.73f, 5.19f, 184.0f);
+                respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
+                other.transform.position = respawnPoint.transform.position;
                 //Destroy(other.transform.GetChild(1).gameObject);
             }
         }
