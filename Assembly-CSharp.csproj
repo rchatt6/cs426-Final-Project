@@ -78,6 +78,9 @@
      <Compile Include="Assets\CameraPath3\Scripts\Util\UnityVersionWrapper.cs" />
      <Compile Include="Assets\CameraPath3\Scripts\Util\XMLVariableConverter.cs" />
      <Compile Include="Assets\CharacterController.cs" />
+     <Compile Include="Assets\FPSWeaponPack01\Scripts\CasingScript.cs" />
+     <Compile Include="Assets\FPSWeaponPack01\Scripts\WeaponControl.cs" />
+     <Compile Include="Assets\FPSWeaponPack01\Scripts\WeaponScript.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\BoatController.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityFlat.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityRealist.cs" />
@@ -106,7 +109,9 @@
      <Compile Include="Assets\Scripts\Pickup.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\TriggerPlayerDamage.cs" />
+     <Compile Include="Assets\Scripts\skyBoxRotate.cs" />
      <Compile Include="Assets\Zombie_Motion\Scripts\ChasePlayer.cs" />
+     <Compile Include="Assets\Zombie_Motion\Scripts\FollowPlayer.cs" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
      <None Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\VortexEffect.shader" />

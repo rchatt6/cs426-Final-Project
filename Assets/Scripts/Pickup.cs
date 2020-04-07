@@ -55,12 +55,15 @@ public class Pickup : MonoBehaviour
 			isHolding = true;
 			item.GetComponent<Rigidbody>().useGravity = false;
 			item.GetComponent<Rigidbody>().detectCollisions = true;
+            //item.GetComponent<Rigidbody>().freezeRotation = false;
+            //item.GetComponent<Rigidbody>().isKinematic = true;
         }
 	}
 	
 	void OnMouseUp()
 	{
 		isHolding = false;
-		
-	}
+        item.GetComponent<Rigidbody>().useGravity = true;
+        //item.GetComponent<Rigidbody>().freezeRotation = true;
+    }
 }
