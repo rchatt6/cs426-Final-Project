@@ -1,6 +1,9 @@
 # CS426 Final Project - The Great Race!
 ## By: Rahul Chatterjee, Allen Breyer, Aakash Kotak
 
+## Design Document
+https://docs.google.com/document/d/1s_18H70d4SwaF5gHm3IApc3wV1Rdj42UssKQFosjxxE/edit?ts=5e6a8d7e
+
 ## Story
 In the near future a virus by the name of COVID-19 has spread across the globe and caused the infected to turn into zombie-like creatures. This pandemic has led to a war for resources leaving those without any supplies vulnerable to the virus. The clock is counting down between two superpowers to fight over the remaining resources which will ultimately lead to the winner surviving the virus!
 
@@ -13,8 +16,9 @@ In the near future a virus by the name of COVID-19 has spread across the globe a
  - Reload - R
 
 ## Design and Rationale
-Realistic island floor plan to enhance immersion
-Each area of the island has its own advantages and disadvantages
+Realistic island floor plan to enhance immersion.
+
+Each area of the island has its own advantages and disadvantages:
  - Forest area (better hiding and cover from enemy players because of trees, but zombies lurk there and can be hard to see)
  - Outer area (the beach, little-to-no-cover from enemy players, but can easily see and escape from zombies)
  - Military base (area is safe from zombies but not other enemy players, the player can replenish supplies here)
