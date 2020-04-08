@@ -32,7 +32,7 @@ Zombies are NPC’s that were soldiers before turning into zombies. Zombies are 
  - Zombie character uses a FSM to determine when it can “see” the player, how to approach the player, and when to attack the player when it’s close enough (Rahul).
  - The bot player uses Navigation Mesh pathfinding to follow the player. It also uses a FSM to determine if it can “see” the player, whether to run or walk towards the player, and if it starts getting “stuck” on an obstacle it will attempt to jump over it (Allen).
 
-## Mechanim
+## Mecanim
   - Player character (idle, walk, run, jump, shooting) (Rahul)
   - Zombie character (idle, zombie walk, zombie swing attack) (Aakash)
   - Player Bot (idle, walk, run, jump) (Allen)
