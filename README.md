@@ -10,6 +10,7 @@ In the near future a virus by the name of COVID-19 has spread across the globe a
  - Run - SHIFT
  - Firing weapon & Grab Bridge Piece- LMB
  - Aim - RMB
+ - Reload - R
 
 ## Design and Rationale
 Realistic island floor plan to enhance immersion
