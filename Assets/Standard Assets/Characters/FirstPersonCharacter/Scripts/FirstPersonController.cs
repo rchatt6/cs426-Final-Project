@@ -70,7 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            StaminaBar.currentStamina = StaminaBar.maxStamina;
+            Player.currentStamina = Player.maxStamina;
+            //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
 
@@ -269,11 +270,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //Debug.Log(StaminaBar.currentStamina);
 
-            if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.currentStamina > 1)
+            if (Input.GetKey(KeyCode.LeftShift) && Player.currentStamina > 1)
             {
-                StaminaBar.instance.UseStamina(1);
+                //StaminaBar.instance.UseStamina(1);
                 //StaminaBar.UseStamina(1);
-
+                Player.instance.UseStamina(1);
                 m_IsWalking = false;
             }
             else

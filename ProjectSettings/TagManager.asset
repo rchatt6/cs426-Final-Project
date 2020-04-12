@@ -9,6 +9,7 @@ TagManager:
   - DeathPlane
   - WaterProDaytime
   - Zombie
+  - BarbWire
   layers:
   - Default
   - TransparentFX

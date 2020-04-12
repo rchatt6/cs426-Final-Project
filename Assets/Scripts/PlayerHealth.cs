@@ -111,7 +111,7 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         //CurrentHealth = 0;
-        Debug.Log("You died");
+        //Debug.Log("You died");
         //healthbar.value = CalculateHealth();
         //healthText.text = CurrentHealth + "/" + MaxHealth;
     }
