@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using Mirror;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
-    public class FirstPersonController : MonoBehaviour
+    public class FirstPersonController : NetworkBehaviour
     {
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
@@ -53,9 +54,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public static Animator anim;
 
         // Use this for initialization
-        private void Start()
+        public override void OnStartLocalPlayer()
         {
             m_CharacterController = GetComponent<CharacterController>();
+
+            Camera.main.transform.position = this.transform.position;
+            Camera.main.transform.position += new Vector3(0, 1.4f, 0);
+            Camera.main.transform.rotation = this.transform.rotation;
+            Camera.main.transform.parent = this.transform;
+
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
@@ -70,13 +77,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            StaminaBar.currentStamina = StaminaBar.maxStamina;
+            Player.currentStamina = Player.maxStamina;
+            //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
 
         // Update is called once per frame
         private void Update()
         {
+            if (!hasAuthority)
+            {
+                return;
+            }
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -116,6 +129,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            if (!hasAuthority)
+            {
+                return;
+            }
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -264,18 +282,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
+            // keep track of whether or not the chaPlayer.instanceracter is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
             
 
-            //Debug.Log(m_CharacterController.velocity);
+            //Debug.Log(StaminaBar.currentStamina);
 
-            if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
+            if (Input.GetKey(KeyCode.LeftShift) && Player.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
             {
-                StaminaBar.instance.UseStamina(1);
+                //StaminaBar.instance.UseStamina(1);
                 //StaminaBar.UseStamina(1);
-
+                Player.instance.UseStamina(1);
                 m_IsWalking = false;
                 anim.SetBool("isRunning", true);
             }

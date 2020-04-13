@@ -36,18 +36,8 @@ public class TriggerPlayerDamage : MonoBehaviour
         {
             m_AudioSource.clip = hurtSound;
             m_AudioSource.Play();
+            Debug.Log(PlayerHealth.CurrentHealth);
 
-            if (PlayerHealth.hasArmor && PlayerHealth.CurrentHealth == 100)
-            {
-                //DealArmorDamage(30);
-
-            }
-
-            if (!PlayerHealth.hasArmor || PlayerHealth.CurrentArmor <= 0)
-            {
-                //DealDamage(20);
-            }
-            
             if (PlayerHealth.CurrentHealth <= 0)
             {
                 //Debug.Log(other.transform.GetChild(0).gameObject.name);

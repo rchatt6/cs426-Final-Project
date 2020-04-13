@@ -31,9 +31,13 @@ public class FollowPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         t = GetComponent<Transform>();
 
-        distance = Vector3.Distance(this.transform.position, player.transform.position);
-        distance1 = Vector3.Distance(this.transform.position, player.transform.position);
-        distance2 = Vector3.Distance(this.transform.position, player.transform.position);
+        if (player)
+        {
+            distance = Vector3.Distance(this.transform.position, player.transform.position);
+            distance1 = Vector3.Distance(this.transform.position, player.transform.position);
+            distance2 = Vector3.Distance(this.transform.position, player.transform.position);
+        }
+        
         agent.speed = 3.8f;
         frame = 0;
     }
