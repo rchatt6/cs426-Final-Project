@@ -36,3 +36,9 @@ Zombies are NPC’s that were soldiers before turning into zombies. Zombies are 
   - Player character (idle, walk, run, jump, shooting) (Rahul)
   - Zombie character (idle, zombie walk, zombie swing attack) (Aakash)
   - Player Bot (idle, walk, run, jump) (Allen)
+  
+## UI
+  - Created a new health, armor and stamina bar with icons to indicate which parts are for what.
+  - Added a lerping speed so that there's a delay when the player takes damage instead of having the damage show up on the bars instantly. It looks cooler, many popular games have this implementation, and it doesn't make the UI look clunky.
+  - The colors for each survival bar gets darker when the bars are running low. For example, health bar is bright red at 100 health, but will become a darker red at 20 health. Good to have an indicator for when bars are running low.
+  - Added a green-yellow background color for all the bars to make it look nicer and not blend in with the background so the player can see them easily.
