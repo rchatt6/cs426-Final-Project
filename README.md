@@ -38,6 +38,7 @@ Zombies are NPC’s that were soldiers before turning into zombies. Zombies are 
   - Player Bot (idle, walk, run, jump) (Allen)
   
 ## UI
+  - There is a title screen now that explains the story and instructions of the game, as well as player controls. When the player is ready, they can click "PLAY". This makes it feel more like a game with a goal because there is now a story and objective given for the player instead of having the player jump right into the game without explaining any rules.
   - Created a new health, armor and stamina bar with icons to indicate which parts are for what.
   - Added a lerping speed so that there's a delay when the player takes damage instead of having the damage show up on the bars instantly. It looks cooler, many popular games have this implementation, and it doesn't make the UI look clunky.
   - The colors for each survival bar gets darker when the bars are running low. For example, health bar is bright red at 100 health, but will become a darker red at 20 health. Good to have an indicator for when bars are running low.
