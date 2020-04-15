@@ -36,8 +36,7 @@ public class TriggerPlayerDamage : MonoBehaviour
         {
             m_AudioSource.clip = hurtSound;
             m_AudioSource.Play();
-            Debug.Log(PlayerHealth.CurrentHealth);
-
+            
             if (PlayerHealth.CurrentHealth <= 0)
             {
                 //Debug.Log(other.transform.GetChild(0).gameObject.name);

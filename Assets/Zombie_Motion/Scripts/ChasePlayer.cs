@@ -43,7 +43,7 @@ public class ChasePlayer : MonoBehaviour
         //m_Collider = GetComponentInChildren<Collider>();
         m_Collider.enabled = false;
         //m_AudioSource = GetComponentInChildren<AudioSource>();
-        //distance = Vector3.Distance(this.transform.position, player.transform.position);
+        distance = Vector3.Distance(this.transform.position, player.transform.position);
         agent.speed = 3f;
         frame = 0;
         frame2 = 0;

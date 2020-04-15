@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
 
         while (currentStamina < maxStamina)
         {
-            currentStamina += maxStamina / 100;
+            currentStamina += maxStamina / 50;
             stamina.CurrentVal = currentStamina;
             yield return regenTick;
         }
