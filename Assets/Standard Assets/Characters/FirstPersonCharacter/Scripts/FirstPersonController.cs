@@ -70,7 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            StaminaBar.currentStamina = StaminaBar.maxStamina;
+            Player.currentStamina = Player.maxStamina;
+            //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
 
@@ -254,10 +255,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_IsWalking)
             {
                 anim.SetBool("isWalking", true);
+                anim.SetBool("isRunning", false);
             }
             else
             {
                 anim.SetBool("isWalking", false);
+                anim.SetBool("isRunning", false);
             }
 
 #if !MOBILE_INPUT
@@ -265,20 +268,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // keep track of whether or not the character is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
-            
+
 
             //Debug.Log(StaminaBar.currentStamina);
 
-            if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.currentStamina > 1)
+            if (Input.GetKey(KeyCode.LeftShift) && Player.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
             {
-                StaminaBar.instance.UseStamina(1);
+                //StaminaBar.instance.UseStamina(1);
                 //StaminaBar.UseStamina(1);
-
+                Player.instance.UseStamina(1);
                 m_IsWalking = false;
+                anim.SetBool("isRunning", true);
             }
             else
             {
                 m_IsWalking = true;
+                anim.SetBool("isRunning", false);
             }
 
             // set the desired speed to be walking or running
