@@ -11,41 +11,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField]
-        private bool m_IsWalking;
-        [SerializeField]
-        private float m_WalkSpeed;
-        [SerializeField]
-        private float m_RunSpeed;
-        [SerializeField]
-        [Range(0f, 1f)]
-        private float m_RunstepLenghten;
-        [SerializeField]
-        private float m_JumpSpeed;
-        [SerializeField]
-        private float m_StickToGroundForce;
-        [SerializeField]
-        private float m_GravityMultiplier;
-        [SerializeField]
-        private MouseLook m_MouseLook;
-        [SerializeField]
-        private bool m_UseFovKick;
-        [SerializeField]
-        private FOVKick m_FovKick = new FOVKick();
-        [SerializeField]
-        private bool m_UseHeadBob;
-        [SerializeField]
-        private CurveControlledBob m_HeadBob = new CurveControlledBob();
-        [SerializeField]
-        private LerpControlledBob m_JumpBob = new LerpControlledBob();
-        [SerializeField]
-        private float m_StepInterval;
-        [SerializeField]
-        private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
-        [SerializeField]
-        private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
-        [SerializeField]
-        private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] private bool m_IsWalking;
+        [SerializeField] private float m_WalkSpeed;
+        [SerializeField] private float m_RunSpeed;
+        [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
+        [SerializeField] private float m_JumpSpeed;
+        [SerializeField] private float m_StickToGroundForce;
+        [SerializeField] private float m_GravityMultiplier;
+        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] private bool m_UseFovKick;
+        [SerializeField] private FOVKick m_FovKick = new FOVKick();
+        [SerializeField] private bool m_UseHeadBob;
+        [SerializeField] private CurveControlledBob m_HeadBob = new CurveControlledBob();
+        [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
+        [SerializeField] private float m_StepInterval;
+        [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+        [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
+        [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -88,7 +70,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            StaminaBar.currentStamina = StaminaBar.maxStamina;
+            Player.currentStamina = Player.maxStamina;
+            //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
 
@@ -287,13 +270,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #endif
 
 
-            //Debug.Log(m_CharacterController.velocity);
+            //Debug.Log(StaminaBar.currentStamina);
 
-            if (Input.GetKey(KeyCode.LeftShift) && StaminaBar.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
+            if (Input.GetKey(KeyCode.LeftShift) && Player.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
             {
-                StaminaBar.instance.UseStamina(1);
+                //StaminaBar.instance.UseStamina(1);
                 //StaminaBar.UseStamina(1);
-
+                Player.instance.UseStamina(1);
                 m_IsWalking = false;
                 anim.SetBool("isRunning", true);
             }

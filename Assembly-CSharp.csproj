@@ -106,9 +106,14 @@
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\SepiaToneEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\TwirlEffect.cs" />
      <Compile Include="Assets\Military1\Standard Assets\Image Effects (Pro Only)\VortexEffect.cs" />
+     <Compile Include="Assets\Scripts\FinishLine.cs" />
      <Compile Include="Assets\Scripts\Pickup.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\SwitchScenes.cs" />
      <Compile Include="Assets\Scripts\TriggerPlayerDamage.cs" />
+     <Compile Include="Assets\Scripts\menuStart.cs" />
+     <Compile Include="Assets\Scripts\quit.cs" />
      <Compile Include="Assets\Scripts\skyBoxRotate.cs" />
      <Compile Include="Assets\Zombie_Motion\Scripts\ChasePlayer.cs" />
      <Compile Include="Assets\Zombie_Motion\Scripts\FollowPlayer.cs" />
