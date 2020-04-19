@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     public static bool hasArmor = true;
 
@@ -48,31 +49,39 @@ public class Player : MonoBehaviour
         armor.CurrentVal = maxArmor;
     }
 
+    void Update()
+    {
+        if (!hasAuthority)
+        {
+            return;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!isLocalPlayer)
+            return;
+
         if (other.tag == "Zombie")
         {
-            if(armor.CurrentVal >= 1 && armor.CurrentVal <= 90)
+            if (armor.CurrentVal >= 1 && armor.CurrentVal <= 90)
             {
                 armor.CurrentVal -= 30;
             }
-            if(armor.CurrentVal <= 0)
+            if (armor.CurrentVal <= 0)
             {
                 armor.CurrentVal = 0;
                 health.CurrentVal -= 20;
             }
         }
-        /*if (health.CurrentVal <= 0)
-        {
-            health.CurrentVal = health.MaxVal;
-        }*/
-        if (other.tag == "BarbWire")
+        else if (other.tag == "BarbWire")
         {
             health.CurrentVal -= 5;
         }
         // deal max damage
         else if (other.tag == "DeathPlane")
         {
+
             health.CurrentVal -= health.MaxVal;
         }
         // respawns the player with 100 health again
@@ -84,6 +93,7 @@ public class Player : MonoBehaviour
                 health.CurrentVal = health.MaxVal;
             }
         }
+        Debug.Log("health.CurrentVal: " + health.CurrentVal);
     }
 
     public void UseStamina(float amount)
