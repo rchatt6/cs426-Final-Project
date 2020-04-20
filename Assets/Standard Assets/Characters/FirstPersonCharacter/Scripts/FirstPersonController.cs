@@ -4,30 +4,49 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using Mirror;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AudioSource))]
-    public class FirstPersonController : MonoBehaviour
+    public class FirstPersonController : NetworkBehaviour
     {
-        [SerializeField] private bool m_IsWalking;
-        [SerializeField] private float m_WalkSpeed;
-        [SerializeField] private float m_RunSpeed;
-        [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
-        [SerializeField] private float m_JumpSpeed;
-        [SerializeField] private float m_StickToGroundForce;
-        [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
-        [SerializeField] private bool m_UseFovKick;
-        [SerializeField] private FOVKick m_FovKick = new FOVKick();
-        [SerializeField] private bool m_UseHeadBob;
-        [SerializeField] private CurveControlledBob m_HeadBob = new CurveControlledBob();
-        [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
-        [SerializeField] private float m_StepInterval;
-        [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
-        [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
-        [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField]
+        private bool m_IsWalking;
+        [SerializeField]
+        private float m_WalkSpeed;
+        [SerializeField]
+        private float m_RunSpeed;
+        [SerializeField]
+        [Range(0f, 1f)]
+        private float m_RunstepLenghten;
+        [SerializeField]
+        private float m_JumpSpeed;
+        [SerializeField]
+        private float m_StickToGroundForce;
+        [SerializeField]
+        private float m_GravityMultiplier;
+        [SerializeField]
+        private MouseLook m_MouseLook;
+        [SerializeField]
+        private bool m_UseFovKick;
+        [SerializeField]
+        private FOVKick m_FovKick = new FOVKick();
+        [SerializeField]
+        private bool m_UseHeadBob;
+        [SerializeField]
+        private CurveControlledBob m_HeadBob = new CurveControlledBob();
+        [SerializeField]
+        private LerpControlledBob m_JumpBob = new LerpControlledBob();
+        [SerializeField]
+        private float m_StepInterval;
+        [SerializeField]
+        private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+        [SerializeField]
+        private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
+        [SerializeField]
+        private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -53,9 +72,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public static Animator anim;
 
         // Use this for initialization
-        private void Start()
+        public override void OnStartLocalPlayer()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
             m_CharacterController = GetComponent<CharacterController>();
+
+            Camera.main.transform.position = this.transform.position;
+            Camera.main.transform.position += new Vector3(0, 1.4f, 0);
+            Camera.main.transform.rotation = this.transform.rotation;
+            Camera.main.transform.parent = this.transform;
+
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
@@ -70,7 +100,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            Player.currentStamina = Player.maxStamina;
+            //pl.currentStamina = Player.maxStamina;
             //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
@@ -78,6 +108,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -117,6 +152,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -244,6 +284,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
+
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
@@ -265,18 +306,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
+            // keep track of whether or not the chaPlayer.instanceracter is walking or running
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
 
 
             //Debug.Log(StaminaBar.currentStamina);
 
-            if (Input.GetKey(KeyCode.LeftShift) && Player.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
+            /*if (Input.GetKey(KeyCode.LeftShift) && pl.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
             {
                 //StaminaBar.instance.UseStamina(1);
                 //StaminaBar.UseStamina(1);
-                Player.instance.UseStamina(1);
+
+                if (Player.instance)
+                {
+                    Player.instance.UseStamina(1);
+                }
                 m_IsWalking = false;
                 anim.SetBool("isRunning", true);
             }
@@ -284,7 +329,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_IsWalking = true;
                 anim.SetBool("isRunning", false);
-            }
+            }*/
 
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;

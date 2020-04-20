@@ -31,9 +31,13 @@ public class FollowPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         t = GetComponent<Transform>();
 
-        distance = Vector3.Distance(this.transform.position, player.transform.position);
-        distance1 = Vector3.Distance(this.transform.position, player.transform.position);
-        distance2 = Vector3.Distance(this.transform.position, player.transform.position);
+        if (player)
+        {
+            distance = Vector3.Distance(this.transform.position, player.transform.position);
+            distance1 = Vector3.Distance(this.transform.position, player.transform.position);
+            distance2 = Vector3.Distance(this.transform.position, player.transform.position);
+        }
+
         agent.speed = 3.8f;
         frame = 0;
     }
@@ -44,7 +48,7 @@ public class FollowPlayer : MonoBehaviour
         if (player)
         {
             distance = Vector3.Distance(this.transform.position, player.transform.position);
-            
+
             if ((distance <= playerViewDistance) && (distance >= playerFollowDistance))
             {
                 FindTarget();
@@ -93,7 +97,7 @@ public class FollowPlayer : MonoBehaviour
                 rb.AddRelativeForce(Vector3.forward * 1200f);
             }
 
-            
+
         }
         else if (frame >= 200)
         {
@@ -111,7 +115,7 @@ public class FollowPlayer : MonoBehaviour
             anim.SetBool("isWalking", false);
             anim.SetBool("isRunning", false);
         }
-        else if (distance > playerFollowDistance && distance < playerViewDistance/2)
+        else if (distance > playerFollowDistance && distance < playerViewDistance / 2)
         {
             agent.speed = 3.8f;
             anim.SetBool("isWalking", true);

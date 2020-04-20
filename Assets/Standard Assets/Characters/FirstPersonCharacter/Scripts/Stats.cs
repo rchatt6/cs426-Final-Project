@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Mirror;
 
 [Serializable]
 public class Stats
@@ -9,11 +10,11 @@ public class Stats
     [SerializeField]
     private BarScript bar;
 
-    [SerializeField]
-    private float maxVal;
+    [SyncVar]
+    public float maxVal;
 
-    [SerializeField]
-    private float currentVal;
+    [SyncVar]
+    public float currentVal;
 
     public float CurrentVal
     {

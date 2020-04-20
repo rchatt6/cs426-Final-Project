@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 2490731992217287377}
   - component: {fileID: 2490731992217287382}
   - component: {fileID: 2490731992217287383}
-  - component: {fileID: 2490731992217287379}
   - component: {fileID: 2490731992217287376}
+  - component: {fileID: 4669575420625853411}
+  - component: {fileID: 4253954809023670270}
   m_Layer: 0
   m_Name: Bridge Piece
   m_TagString: Untagged
@@ -127,21 +128,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.016, y: 1.0160003, z: 0.15240003}
   m_Center: {x: -0.0000038146973, y: -1.0828671e-15, z: 0.076200046}
---- !u!114 &2490731992217287379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5886546227148007708}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8ef0545cd89264bb74ccf46f00d07d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  centerOfMassOffset: {x: 0, y: 0, z: 0}
-  buoyancyMesh: {fileID: 5060444177187149915, guid: 482c8a20c426c1d419dc5cae0cc31343,
-    type: 3}
 --- !u!114 &2490731992217287376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +140,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b642374ad5af541b2e67b6d67efe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   canhold: 1
   item: {fileID: 5886546227148007708}
   tempParent: {fileID: 0}
   isHolding: 0
+--- !u!114 &4669575420625853411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5886546227148007708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+--- !u!114 &4253954809023670270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5886546227148007708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01

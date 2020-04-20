@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 2510507324004170021}
   - component: {fileID: 2510507324004170026}
   - component: {fileID: 2510507324004170027}
+  - component: {fileID: -6162224241558313897}
   m_Layer: 5
   m_Name: ArmorBar
   m_TagString: Untagged
@@ -179,12 +180,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805c4ff96ad43174a9c0248836d374ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   lerpSpeed: 3
   content: {fileID: 2510507323424717656}
   fullColor: {r: 0.3066038, g: 0.35013595, b: 1, a: 1}
   lowColor: {r: 0, g: 0.052202668, b: 0.7169812, a: 1}
   valueText: {fileID: 2510507325448483613}
   lerpColors: 1
+--- !u!114 &-6162224241558313897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510507324004170025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
 --- !u!1 &2510507324751240896
 GameObject:
   m_ObjectHideFlags: 0

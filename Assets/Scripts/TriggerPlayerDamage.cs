@@ -1,54 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class TriggerPlayerDamage : MonoBehaviour
+public class TriggerPlayerDamage : NetworkBehaviour
 {
-    //public float CurrentHealth { get; set; }
-    //public float MaxHealth { get; set; }
-    //public float CurrentArmor { get; set; }
-    //public float MaxArmor { get; set; }
-    //public bool hasArmor = true;
-
-    //public float health = 100;
-    //public float armor = 90;
-    //public float damage = 20;
 
     private AudioSource m_AudioSource;
     [SerializeField] private AudioClip hurtSound;
     private GameObject respawnPoint;
+    //Player pl = new Player();
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerHealth.MaxHealth = 100;
+        if (!isServer)
+            return;
+
+
+        /*Player.maxHealth = 100;
+        
         PlayerHealth.CurrentHealth = PlayerHealth.MaxHealth;
 
         PlayerHealth.MaxArmor = 90;
-        PlayerHealth.CurrentArmor = PlayerHealth.MaxArmor;
+        PlayerHealth.CurrentArmor = PlayerHealth.MaxArmor;*/
 
         m_AudioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("TriggerPlayerDamage");
+
+        if (!isServer)
+            return;
+
+        
+
         if (other.tag == "Player")
         {
+            //Debug.Log("hurtSound = " + hurtSound);
+
             m_AudioSource.clip = hurtSound;
             m_AudioSource.Play();
-            
-            if (PlayerHealth.CurrentHealth <= 0)
+
+            //Debug.Log("Player.currentHealth: " + pl.currentHealth);
+
+            /*if (pl.currentHealth <= 0)
             {
                 //Debug.Log(other.transform.GetChild(0).gameObject.name);
                 //Destroy(other.gameObject);
                 respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
                 other.transform.position = respawnPoint.transform.position;
                 //Destroy(other.transform.GetChild(1).gameObject);
-            }
+            }*/
         }
     }
 
-    void DealArmorDamage(float damageValue)
+    /*void DealArmorDamage(float damageValue)
     {
         PlayerHealth.CurrentArmor -= damageValue;
     }
@@ -56,5 +65,5 @@ public class TriggerPlayerDamage : MonoBehaviour
     void DealDamage(float damageValue)
     {
         PlayerHealth.CurrentHealth -= damageValue;
-    }
+    }*/
 }

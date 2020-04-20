@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Pickup : MonoBehaviour
+public class Pickup : NetworkBehaviour
 {
     float throwForce = 600;
 	Vector3 objectPos;
@@ -15,6 +16,9 @@ public class Pickup : MonoBehaviour
 	
 	void Update ()
 	{
+        if (!isLocalPlayer)
+            return;
+
         if (tempParent)
         {
             distance = Vector3.Distance(item.transform.position, tempParent.transform.position);

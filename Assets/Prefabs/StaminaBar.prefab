@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 7503563412899226785}
   - component: {fileID: 7503563412899226798}
   - component: {fileID: 7503563412899226799}
+  - component: {fileID: 2849532054218679975}
   m_Layer: 5
   m_Name: StaminaBar
   m_TagString: Untagged
@@ -268,12 +269,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805c4ff96ad43174a9c0248836d374ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   lerpSpeed: 3
   content: {fileID: 7503563412736165442}
   fullColor: {r: 1, g: 0.8031123, b: 0.25943398, a: 1}
   lowColor: {r: 0.49056602, g: 0.4254776, b: 0.09487361, a: 1}
   valueText: {fileID: 7503563413253635451}
   lerpColors: 1
+--- !u!114 &2849532054218679975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503563412899226797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
 --- !u!1 &7503563413253635430
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +369,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Stamina:'
+  m_Text: 'Stamina: 500'
 --- !u!114 &7503563413253635448
 MonoBehaviour:
   m_ObjectHideFlags: 0
