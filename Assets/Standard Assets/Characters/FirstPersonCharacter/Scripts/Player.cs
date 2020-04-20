@@ -17,12 +17,17 @@ public class Player : NetworkBehaviour
     [SerializeField]
     private Stats stamina;
 
-    public static float maxStamina = 500f;
-    public static float currentStamina;
-    public static float maxHealth = 100f;
-    public static float currentHealth;
-    public static float maxArmor = 90f;
-    public static float currentArmor;
+    public const float maxStamina = 500f;
+    [SyncVar]
+    public float currentStamina = maxStamina;
+
+    public const float maxHealth = 100f;
+    [SyncVar]
+    public float currentHealth = maxHealth;
+
+    public const float maxArmor = 90f;
+    [SyncVar]
+    public float currentArmor = maxArmor;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
@@ -31,6 +36,9 @@ public class Player : NetworkBehaviour
 
     private void Awake()
     {
+        if (!isLocalPlayer)
+            return;
+
         health.Initialize();
         armor.Initialize();
         instance = this;
@@ -38,6 +46,9 @@ public class Player : NetworkBehaviour
 
     void Start()
     {
+        if (!isLocalPlayer)
+            return;
+
         currentStamina = maxStamina;
         stamina.MaxVal = maxStamina;
         stamina.CurrentVal = maxStamina;
@@ -51,15 +62,13 @@ public class Player : NetworkBehaviour
 
     void Update()
     {
-        if (!hasAuthority)
-        {
+        if (!isLocalPlayer)
             return;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isLocalPlayer)
+        if (!isServer)
             return;
 
         if (other.tag == "Zombie")
@@ -93,7 +102,7 @@ public class Player : NetworkBehaviour
                 health.CurrentVal = health.MaxVal;
             }
         }
-        Debug.Log("health.CurrentVal: " + health.CurrentVal);
+        Debug.Log("health.CurrentVal2: " + health.CurrentVal);
     }
 
     public void UseStamina(float amount)

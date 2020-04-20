@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 2364367518822123274}
   - component: {fileID: 2364367518822123277}
   - component: {fileID: 2364367518822123275}
+  - component: {fileID: 8481402842780446607}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -178,12 +179,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805c4ff96ad43174a9c0248836d374ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   lerpSpeed: 3
   content: {fileID: 2364367519145095158}
   fullColor: {r: 1, g: 0.24097049, b: 0, a: 1}
   lowColor: {r: 0.5566038, g: 0, b: 0.014968026, a: 1}
   valueText: {fileID: 2364367519394723507}
   lerpColors: 1
+--- !u!114 &8481402842780446607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2364367518822123279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
 --- !u!1 &2364367519145095160
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Health:'
+  m_Text: 'Health: 40'
 --- !u!114 &2364367519394723505
 MonoBehaviour:
   m_ObjectHideFlags: 0

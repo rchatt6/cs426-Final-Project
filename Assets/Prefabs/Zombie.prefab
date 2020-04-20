@@ -1047,7 +1047,8 @@ AudioSource:
   m_GameObject: {fileID: 4338100743642748712}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4cfa0b7e766cc2042890b15e3695dffe,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 576e394cb0e4cc84babe1564b768fe67, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.9
@@ -1773,7 +1774,8 @@ GameObject:
   - component: {fileID: 5698718954897147828}
   - component: {fileID: 5698718954897147830}
   - component: {fileID: 5698718954897147831}
-  - component: {fileID: 5698718954897147829}
+  - component: {fileID: 3891697846596807505}
+  - component: {fileID: 944663382111271093}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Zombie
@@ -1904,7 +1906,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5698718954897147829
+--- !u!114 &3891697846596807505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1913,10 +1915,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 5698718954897147827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6743edeedeea7dc45ad7c5dedfec5300, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  m_AssetId: 
+--- !u!114 &944663382111271093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698718954897147827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d39a3045a476c846bd8d082b881f81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   hurtSound: {fileID: 8300000, guid: bddb83d30ed5f0d44a35fef7cd826df3, type: 3}
+  damageValue: 30
 --- !u!1 &6049243268318332602
 GameObject:
   m_ObjectHideFlags: 0

@@ -100,7 +100,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //anim = gameObject.GetComponent<Animator>();
             anim = gameObject.GetComponentInChildren<Animator>();
 
-            Player.currentStamina = Player.maxStamina;
+            //pl.currentStamina = Player.maxStamina;
             //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
 
@@ -284,6 +284,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
+
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
@@ -312,11 +313,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             //Debug.Log(StaminaBar.currentStamina);
 
-            if (Input.GetKey(KeyCode.LeftShift) && Player.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
+            /*if (Input.GetKey(KeyCode.LeftShift) && pl.currentStamina > 1 && (m_CharacterController.velocity.x != 0 || m_CharacterController.velocity.z != 0))
             {
                 //StaminaBar.instance.UseStamina(1);
                 //StaminaBar.UseStamina(1);
-                Player.instance.UseStamina(1);
+
+                if (Player.instance)
+                {
+                    Player.instance.UseStamina(1);
+                }
                 m_IsWalking = false;
                 anim.SetBool("isRunning", true);
             }
@@ -324,7 +329,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_IsWalking = true;
                 anim.SetBool("isRunning", false);
-            }
+            }*/
 
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;

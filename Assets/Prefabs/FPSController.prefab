@@ -62,8 +62,8 @@ GameObject:
   - component: {fileID: 8863200069040884064}
   - component: {fileID: 8863200069044264928}
   - component: {fileID: 8863200069046150496}
-  - component: {fileID: 8863200068704205869}
-  - component: {fileID: 8863200068704205875}
+  - component: {fileID: -8364249348070120458}
+  - component: {fileID: -3077387051397657463}
   - component: {fileID: 1723840047094825181}
   - component: {fileID: 7420560588703906074}
   - component: {fileID: -5241615720876435507}
@@ -260,7 +260,8 @@ AudioSource:
   m_GameObject: {fileID: 8863200069047434368}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4cfa0b7e766cc2042890b15e3695dffe,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -347,8 +348,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!136 &8863200068704205869
-CapsuleCollider:
+--- !u!64 &-8364249348070120458
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -356,12 +357,12 @@ CapsuleCollider:
   m_GameObject: {fileID: 8863200069047434368}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8863200068704205875
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &-3077387051397657463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,23 +371,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8863200069047434368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d8c07a07aea6b46913b4f54e546964, type: 3}
+  m_Script: {fileID: 11500000, guid: acc99df09bfb5d848a8dac440a14b8fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 2
+  currentHealth: 100
   health:
     bar: {fileID: 2364367518822123275, guid: bd5a267ddd7b2614fa9d8405472be96d, type: 3}
     maxVal: 100
     currentVal: 100
-  armor:
-    bar: {fileID: 2510507324004170027, guid: c3ebc09de05400148b7db9ffc3bd01c9, type: 3}
-    maxVal: 90
-    currentVal: 90
-  stamina:
-    bar: {fileID: 7503563412899226799, guid: 951f49b5bf37c01488f9c26782640ce8, type: 3}
-    maxVal: 500
-    currentVal: 500
 --- !u!114 &1723840047094825181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +499,12 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82000010915659692, guid: 10e719182caa182418e55be7e6ca409d,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 4cfa0b7e766cc2042890b15e3695dffe,
+        type: 2}
     - target: {fileID: 114000010225374976, guid: 10e719182caa182418e55be7e6ca409d,
         type: 3}
       propertyPath: au_shot
