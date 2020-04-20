@@ -30,7 +30,7 @@ public class Pickup : MonoBehaviour
                 item.transform.SetParent(tempParent.transform);
 
 
-                if (Input.GetMouseButtonDown(2))
+                if (Input.GetMouseButtonDown(1))
                 {
                     //throw
                     item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
