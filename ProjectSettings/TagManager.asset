@@ -10,6 +10,7 @@ TagManager:
   - WaterProDaytime
   - Zombie
   - BarbWire
+  - ZombieSpawn
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Mirror;
 
-public class WeaponScript : MonoBehaviour {
+public class WeaponScript : NetworkBehaviour {
 
 	Animator a;
 	CharacterController co;
@@ -57,6 +58,12 @@ public class WeaponScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+		/* if(!isLocalPlayer)
+            {
+                return;
+            }*/
+			
 		a = gameObject.GetComponentInChildren<Animator> ();
 		au = gameObject.GetComponent<AudioSource> ();
 
@@ -67,6 +74,12 @@ public class WeaponScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
+		/*if (!isLocalPlayer)
+            {
+                return;
+            }*/
+			
 		//If the shot timer is greater than zero, reduce it by 1 per second
 		if (shotTimer > 0)
 			shotTimer -= Time.deltaTime;

@@ -22,6 +22,9 @@ public class Pickup : MonoBehaviour
             {
                 isHolding = false;
             }
+			
+			//Input Check
+			
             //Check of isHolding
             if (isHolding == true)
             {
