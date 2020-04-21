@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 8863200067512372898}
   m_Layer: 0
   m_Name: Destination
-  m_TagString: Untagged
+  m_TagString: Destination
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 8863200069046150496}
   - component: {fileID: -8364249348070120458}
   - component: {fileID: -3077387051397657463}
+  - component: {fileID: 1041525077383773660}
   - component: {fileID: 1723840047094825181}
   - component: {fileID: 7420560588703906074}
   - component: {fileID: -5241615720876435507}
@@ -375,12 +376,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 2
+  syncInterval: 0.2
   currentHealth: 100
   health:
     bar: {fileID: 2364367518822123275, guid: bd5a267ddd7b2614fa9d8405472be96d, type: 3}
     maxVal: 100
     currentVal: 100
+--- !u!114 &1041525077383773660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863200069047434368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72008efc51efeb049b226a00f3fe73e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  camTransform: {fileID: 8863200069047656608}
 --- !u!114 &1723840047094825181
 MonoBehaviour:
   m_ObjectHideFlags: 0

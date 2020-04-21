@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Mirror;
 
 public class WeaponScript : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class WeaponScript : MonoBehaviour {
 	//Maximum size of the magazine
 	public int magSize = 7;
 	//Bullets currently in the magazine
-	public int mag;
+	public static int mag;
 
 	//Define what type of reload the weapon uses
 	public enum ReloadType {
@@ -57,6 +58,11 @@ public class WeaponScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        /*if (!isLocalPlayer)
+        {
+            return;
+        }*/
+
 		a = gameObject.GetComponentInChildren<Animator> ();
 		au = gameObject.GetComponent<AudioSource> ();
 
@@ -66,9 +72,15 @@ public class WeaponScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		//If the shot timer is greater than zero, reduce it by 1 per second
-		if (shotTimer > 0)
+	void Update ()
+    {
+        /*if (!isLocalPlayer)
+        {
+            return;
+        }*/
+
+        //If the shot timer is greater than zero, reduce it by 1 per second
+        if (shotTimer > 0)
 			shotTimer -= Time.deltaTime;
 
 		//Get the character controller if there is none

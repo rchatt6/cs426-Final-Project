@@ -13,14 +13,25 @@ public class Health : NetworkBehaviour
 
     private GameObject respawnPoint;
 
+    public static int teamNum;
+
     private void Awake()
     {
         if (!isLocalPlayer)
             return;
 
-        Debug.Log("Initialized!");
+        /*if (NetworkServer.connections.Count % 2 == 0)
+        {
+            teamNum = 2;
+        }
+        else
+        {
+            teamNum = 1;
+        }
 
-        health.Initialize();
+        Debug.Log("Initialized! You are on team " + teamNum +"!");
+
+        health.Initialize();*/
     }
 
     void Start()
@@ -28,11 +39,24 @@ public class Health : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
+        if (NetworkServer.connections.Count % 2 == 0)
+        {
+            teamNum = 2;
+        }
+        else
+        {
+            teamNum = 1;
+        }
+
+        Debug.Log("Initialized! You are on team " + teamNum + "!");
+
+        health.Initialize();
+
         currentHealth = maxHealth;
         health.MaxVal = maxHealth;
         health.currentVal = maxHealth;
 
-        Debug.Log("Start!");
+        //Debug.Log("Start!");
     }
 
     public void UpdateHealth(int old, int current)
@@ -59,7 +83,15 @@ public class Health : NetworkBehaviour
             currentHealth = 0;
             health.currentVal = 0;
             Debug.Log("DEAD!");
-            respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
+            if (teamNum == 1)
+            {
+                respawnPoint = GameObject.FindGameObjectWithTag("Respawn1");
+            }
+            else
+            {
+                respawnPoint = GameObject.FindGameObjectWithTag("Respawn2");
+            }
+            
             collider.transform.position = respawnPoint.transform.position;
             currentHealth = 100;
             health.currentVal = 100;
