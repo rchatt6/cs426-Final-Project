@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Pickup : MonoBehaviour
+public class Pickup : NetworkBehaviour
 {
     float throwForce = 600;
 	Vector3 objectPos;
@@ -10,11 +11,19 @@ public class Pickup : MonoBehaviour
 	
 	public bool canhold = true;
 	public GameObject item;
-	public GameObject tempParent;
+	private GameObject tempParent;
 	public bool isHolding = false;
 	
 	void Update ()
 	{
+        //Debug.Log("isClient: " + isClient);
+
+        if (!isClient)
+            return;
+
+        tempParent = GameObject.FindWithTag("Destination");
+        //Debug.Log("tempParent: " + tempParent);
+
         if (tempParent)
         {
             distance = Vector3.Distance(item.transform.position, tempParent.transform.position);
@@ -22,9 +31,6 @@ public class Pickup : MonoBehaviour
             {
                 isHolding = false;
             }
-			
-			//Input Check
-			
             //Check of isHolding
             if (isHolding == true)
             {
@@ -53,7 +59,10 @@ public class Pickup : MonoBehaviour
 	
 	void OnMouseDown()
 	{
-		if(distance <= 4f)
+        if (!isClient)
+            return;
+
+        if (distance <= 4f)
 		{
 			isHolding = true;
 			item.GetComponent<Rigidbody>().useGravity = false;
@@ -65,7 +74,10 @@ public class Pickup : MonoBehaviour
 	
 	void OnMouseUp()
 	{
-		isHolding = false;
+        if (!isClient)
+            return;
+
+        isHolding = false;
         item.GetComponent<Rigidbody>().useGravity = true;
         //item.GetComponent<Rigidbody>().freezeRotation = true;
     }

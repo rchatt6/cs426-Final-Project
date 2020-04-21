@@ -2,7 +2,7 @@
 using System.Collections;
 using Mirror;
 
-public class WeaponScript : NetworkBehaviour {
+public class WeaponScript : MonoBehaviour {
 
 	Animator a;
 	CharacterController co;
@@ -14,7 +14,7 @@ public class WeaponScript : NetworkBehaviour {
 	//Maximum size of the magazine
 	public int magSize = 7;
 	//Bullets currently in the magazine
-	public int mag;
+	public static int mag;
 
 	//Define what type of reload the weapon uses
 	public enum ReloadType {
@@ -58,12 +58,11 @@ public class WeaponScript : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-		/* if(!isLocalPlayer)
-            {
-                return;
-            }*/
-			
+        /*if (!isLocalPlayer)
+        {
+            return;
+        }*/
+
 		a = gameObject.GetComponentInChildren<Animator> ();
 		au = gameObject.GetComponent<AudioSource> ();
 
@@ -73,15 +72,15 @@ public class WeaponScript : NetworkBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-		/*if (!isLocalPlayer)
-            {
-                return;
-            }*/
-			
-		//If the shot timer is greater than zero, reduce it by 1 per second
-		if (shotTimer > 0)
+	void Update ()
+    {
+        /*if (!isLocalPlayer)
+        {
+            return;
+        }*/
+
+        //If the shot timer is greater than zero, reduce it by 1 per second
+        if (shotTimer > 0)
 			shotTimer -= Time.deltaTime;
 
 		//Get the character controller if there is none

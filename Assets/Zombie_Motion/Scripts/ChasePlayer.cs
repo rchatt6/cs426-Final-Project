@@ -13,9 +13,11 @@ public class ChasePlayer : NetworkBehaviour
     float distance;
     int frame;
     int frame2;
+    int frame3;
     private AudioSource m_AudioSource;
     [SerializeField]
     private AudioClip attackSound;
+    Vector3 randPosition;
 
     public float enemyViewDistance;
 
@@ -49,9 +51,11 @@ public class ChasePlayer : NetworkBehaviour
         m_Collider.enabled = false;
         //m_AudioSource = GetComponentInChildren<AudioSource>();
         //distance = Vector3.Distance(this.transform.position, player.transform.position);
+        randPosition = this.transform.position;
         agent.speed = 3f;
         frame = 0;
         frame2 = 0;
+        frame3 = 0;
 
         //StartCoroutine("DoCheck");
         InvokeRepeating("Update1", 0.2f, 0.2f);
@@ -73,9 +77,15 @@ public class ChasePlayer : NetworkBehaviour
             return;
         }
 
+        if (anim.GetBool("isDying") == true)
+        {
+            agent.speed = 0;
+            return;
+        }
+
         player = FindClosestPlayer();
 
-        //Debug.Log(distance);
+        //Debug.Log(frame3);
 
         if (player)
         {
@@ -87,11 +97,28 @@ public class ChasePlayer : NetworkBehaviour
             }
             else
             {
-                agent.SetDestination(this.transform.position);
-                anim.SetBool("isMoving", false);
+                if (frame3 >= 20)
+                {
+                    float rng1 = Random.Range(-4f, 4f);
+                    float rng2 = Random.Range(-4f, 4f);
+                    agent.speed = 2f;
+                    randPosition = new Vector3(this.transform.position.x + rng1, this.transform.position.y, this.transform.position.z + rng2);
+                    agent.SetDestination(randPosition);
+                    anim.SetBool("isMoving", true);
+                    frame3 = 0;
+                }
+
+                distance = Vector3.Distance(this.transform.position, randPosition);
+
+                if (distance <= 0.5)
+                {
+                    anim.SetBool("isMoving", false);
+                }
+
                 anim.SetBool("isAttacking", false);
                 m_Collider.enabled = false;
                 frame = 0;
+                frame3++;
             }
         }
     }
