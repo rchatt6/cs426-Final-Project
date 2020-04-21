@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     public static bool hasArmor = true;
 
@@ -16,12 +17,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Stats stamina;
 
-    public static float maxStamina = 500f;
-    public static float currentStamina;
-    public static float maxHealth = 100f;
-    public static float currentHealth;
-    public static float maxArmor = 90f;
-    public static float currentArmor;
+    public const float maxStamina = 500f;
+    [SyncVar]
+    public float currentStamina = maxStamina;
+
+    public const float maxHealth = 100f;
+    [SyncVar]
+    public float currentHealth = maxHealth;
+
+    public const float maxArmor = 90f;
+    [SyncVar]
+    public float currentArmor = maxArmor;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
     private Coroutine regen;
@@ -30,6 +36,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (!isLocalPlayer)
+            return;
+
         health.Initialize();
         armor.Initialize();
         instance = this;
@@ -37,6 +46,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        if (!isLocalPlayer)
+            return;
+
         currentStamina = maxStamina;
         stamina.MaxVal = maxStamina;
         stamina.CurrentVal = maxStamina;
@@ -48,31 +60,37 @@ public class Player : MonoBehaviour
         armor.CurrentVal = maxArmor;
     }
 
+    void Update()
+    {
+        if (!isLocalPlayer)
+            return;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!isServer)
+            return;
+
         if (other.tag == "Zombie")
         {
-            if(armor.CurrentVal >= 1 && armor.CurrentVal <= 90)
+            if (armor.CurrentVal >= 1 && armor.CurrentVal <= 90)
             {
                 armor.CurrentVal -= 30;
             }
-            if(armor.CurrentVal <= 0)
+            if (armor.CurrentVal <= 0)
             {
                 armor.CurrentVal = 0;
                 health.CurrentVal -= 20;
             }
         }
-        /*if (health.CurrentVal <= 0)
-        {
-            health.CurrentVal = health.MaxVal;
-        }*/
-        if (other.tag == "BarbWire")
+        else if (other.tag == "BarbWire")
         {
             health.CurrentVal -= 5;
         }
         // deal max damage
         else if (other.tag == "DeathPlane")
         {
+
             health.CurrentVal -= health.MaxVal;
         }
         // respawns the player with 100 health again
@@ -84,6 +102,7 @@ public class Player : MonoBehaviour
                 health.CurrentVal = health.MaxVal;
             }
         }
+        Debug.Log("health.CurrentVal2: " + health.CurrentVal);
     }
 
     public void UseStamina(float amount)

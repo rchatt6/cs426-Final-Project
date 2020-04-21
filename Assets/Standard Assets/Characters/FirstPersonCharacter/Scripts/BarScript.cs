@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class BarScript : MonoBehaviour
+public class BarScript : NetworkBehaviour
 {
-    private float fillAmount;
+    //[SyncVar]
+    public float fillAmount;
 
     [SerializeField]
     private float lerpSpeed;
@@ -40,12 +42,20 @@ public class BarScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!isLocalPlayer)
+            return;
+
         content.color = fullColor;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer)
+            return;
+
+        //Debug.Log("HandleBar");
+
         HandleBar();   
     }
 
