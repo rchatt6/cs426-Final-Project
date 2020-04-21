@@ -45,21 +45,11 @@ Zombies are NPC’s that were soldiers before turning into zombies. Zombies are 
   - Added a green-yellow background color for all the bars to make it look nicer and not blend in with the background so the player can see them easily.
   
 ## Sound Design
- - Added footstep sand SFX helps immerse the player into thinking that they are walking on a sandy beach. We plan on adding different kinds of footstep sounds depending on where the player is walking.
+ - Added footstep sand SFX helps immerse the player into thinking that they are walking on a sandy beach. We plan on adding   different kinds of footstep sounds depending on where the player is walking.
  - Added a water dive/splashing SFX so that the player will know that they are going into deep water.
  - Added a Zombie growl SFX to alert the player when a zombie is nearby.
  - Added a Zombie snarl SFX when the zombie starts attacking to give the player an audio clue that they are in an attack state.
  - Added a hit SFX when the player gets hit by a zombie to give audio confirmation that they got attacked.
  - Added a gun shot SFX to give audio confirmation to the player that they fired their weapon.
  - Added a fanfare theme when the player wins the game (getting to the other island with the supplies).
- 
-## Shader Design
- - Added a blood splatter effect that uses transparency and bump maps to indicate that the zombie took damage from the gun.
- - Fog effects enhance the game world’s atmosphere to make it feel more mysterious and dark, and make the world look more realistic.
- - Bridge pieces are not shiny anymore since we changed the texture and removed its specular mapping to make it look more like bridge pieces and match with the world's texture.
-
-## Modifications in Response to the Alpha Feedback
- - We labeled the UI bars so that the player can easily tell what each bar is (health, stamina, armor)
- - We scripted a settings menu that includes options for both volume and graphics quality (the graphics quality can be lowered to help with lagging issues on less powerful machines)
- - The playtesters hardly had any interactions with the zombies, so we scripted zombie spawners so that more will appear as time goes on.
 
