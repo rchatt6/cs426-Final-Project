@@ -104,6 +104,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //pl.currentStamina = Player.maxStamina;
             //StaminaBar.currentStamina = StaminaBar.maxStamina;
         }
+		
+		[Command]
+		void CmdSendPlayerPos(Vector3 pos){
+			RpcUpdatePlayerPos(pos);
+		}
+	
+		[ClientRpc]
+		void RpcUpdatePlayerPos(Vector3 pos){
+			transform.position = pos;
+		}
 
 
         // Update is called once per frame
@@ -198,6 +208,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+			
+			//CmdSendPlayerPos(transform.position);
         }
 
 

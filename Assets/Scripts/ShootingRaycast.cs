@@ -18,8 +18,15 @@ public class ShootingRaycast : NetworkBehaviour
         {
             //CmdSendPlayerHit(hit);
 			CmdSendPlayerCam(camTransform);
-			//CmdSendPlayerCheckifShooting();
+			CmdSendPlayerCheckifShooting();
         }
+    }
+	
+	void FixedUpdate ()
+    {
+        //Debug.Log("FixedUpdate time :" + Time.deltaTime);
+		//CmdSendPlayerCam(camTransform);
+		CmdSendPlayerCheckifShooting();
     }
 
     // Update is called once per frame
@@ -32,8 +39,8 @@ public class ShootingRaycast : NetworkBehaviour
 		if (!isServer)
         {
             //CmdSendPlayerHit(hit);
-			CmdSendPlayerCam(camTransform);
-			//CmdSendPlayerCheckifShooting();
+			/*CmdSendPlayerCam(camTransform);
+			CmdSendPlayerCheckifShooting();*/
 			//CheckifShooting();
         }
         CheckifShooting();
@@ -43,11 +50,11 @@ public class ShootingRaycast : NetworkBehaviour
 		/*if(!isLocalPlayer){
 			return;
 		}*/
-		if (!isServer)
+		/*if (!isServer)
         {
             //CmdSendPlayerHit(hit);
 			CmdSendPlayerCam(camTransform);
-			//CmdSendPlayerCheckifShooting();
+			CmdSendPlayerCheckifShooting();
 			/*if(Input.GetKeyDown(KeyCode.Mouse0))
 			{
 				Debug.Log("mag: " + WeaponScript.mag);
@@ -57,7 +64,7 @@ public class ShootingRaycast : NetworkBehaviour
 				}
 			
 			}*/
-        }
+        //}
 		
 		if(Input.GetKeyDown(KeyCode.Mouse0))
         {

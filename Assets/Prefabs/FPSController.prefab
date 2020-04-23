@@ -68,7 +68,6 @@ GameObject:
   - component: {fileID: 1723840047094825181}
   - component: {fileID: 7420560588703906074}
   - component: {fileID: -5241615720876435507}
-  - component: {fileID: -2309126758274676042}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -390,7 +389,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8863200069047434368}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72008efc51efeb049b226a00f3fe73e5, type: 3}
   m_Name: 
@@ -447,19 +446,6 @@ MonoBehaviour:
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
---- !u!114 &-2309126758274676042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8863200069047434368}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d632d7b07cef2c4a80b5e9c3558e083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camTransform: {fileID: 8863200069047656608}
 --- !u!1001 &683178604063476518
 PrefabInstance:
   m_ObjectHideFlags: 0

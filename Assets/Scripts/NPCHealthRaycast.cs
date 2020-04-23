@@ -34,7 +34,7 @@ public class NPCHealthRaycast : NetworkBehaviour
         if (!isServer)
         {
             CmdSendNPCHealth(currentHealth);
-			CmdSendNPCPos(transform.position);
+			//CmdSendNPCPos(transform.position);
         }
         //bloodParticles.SetActive(false);
         m_AudioSource = GetComponent<AudioSource>();
@@ -85,6 +85,11 @@ public class NPCHealthRaycast : NetworkBehaviour
             frame1++;
         }
     }
+	
+	private void FixedUpdate()
+    {
+		CmdSendNPCPos(transform.position);
+	}
 	
 	public void TakeDamage(int amount){
 		
