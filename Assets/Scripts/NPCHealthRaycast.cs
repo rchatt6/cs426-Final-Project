@@ -6,19 +6,26 @@ using UnityEngine.UI;
 
 public class NPCHealthRaycast : NetworkBehaviour
 {
-    private AudioSource m_AudioSource;
+    [SyncVar]
+	private AudioSource m_AudioSource;
+	[SyncVar]
     [SerializeField]
     private AudioClip zombieHit;
+	[SyncVar]
     [SerializeField]
     private AudioClip zombieDead;
     int frame1;
     bool isDying;
+	[SyncVar]
     Animator anim;
+	[SyncVar]
     [SerializeField]
     private GameObject bloodParticles;
+	[SyncVar]
     [SerializeField]
     private ParticleSystem ps;
 
+	[SyncVar]
     public const int maxHealth = 100;
 	[SyncVar (hook = "OnHealthChanged")] public int currentHealth = maxHealth;
     // Start is called before the first frame update

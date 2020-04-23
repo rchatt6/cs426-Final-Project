@@ -2,7 +2,11 @@
 using System.Collections;
 using Mirror;
 
-public class WeaponScript : MonoBehaviour {
+public class WeaponScript : NetworkBehaviour {
+
+	[SerializeField]
+	GameObject CrosshairPrefab;
+	private GameObject PlayerCrosshairInstance;
 
 	Animator a;
 	CharacterController co;
@@ -78,6 +82,18 @@ public class WeaponScript : MonoBehaviour {
         {
             return;
         }*/
+		
+		//if (isLocalPlayer)
+        //{
+            if (Input.GetKeyDown(KeyCode.Mouse1)) {
+				PlayerCrosshairInstance = Instantiate(CrosshairPrefab);
+				PlayerCrosshairInstance.name = CrosshairPrefab.name;
+			}
+			
+			else if (Input.GetKeyUp(KeyCode.Mouse1)) {
+				Destroy(PlayerCrosshairInstance);
+			}
+        //}
 
         //If the shot timer is greater than zero, reduce it by 1 per second
         if (shotTimer > 0)

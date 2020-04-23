@@ -8,7 +8,8 @@ public class Health : NetworkBehaviour
     public const int maxHealth = 100;
     [SyncVar(hook ="UpdateHealth")]public int currentHealth = maxHealth;
 
-    [SerializeField]
+    [SyncVar]
+	[SerializeField]
     private Stats health;
 
     private GameObject respawnPoint;

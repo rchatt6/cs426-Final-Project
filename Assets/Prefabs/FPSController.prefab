@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 2
   clientAuthority: 1
   animator: {fileID: 8863200068928392278}
 --- !u!114 &-5241615720876435507
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 2
   clientAuthority: 1
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
@@ -526,6 +526,12 @@ PrefabInstance:
       propertyPath: au_shot
       value: 
       objectReference: {fileID: 8300000, guid: f1f5f091ec196b045aba1d223425145f, type: 3}
+    - target: {fileID: 114000010225374976, guid: 10e719182caa182418e55be7e6ca409d,
+        type: 3}
+      propertyPath: CrosshairPrefab
+      value: 
+      objectReference: {fileID: 6444287233912591284, guid: 2dcc25a77f7f162439057d49f439010a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10e719182caa182418e55be7e6ca409d, type: 3}
 --- !u!4 &681475859680411818 stripped
