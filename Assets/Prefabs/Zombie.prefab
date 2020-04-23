@@ -1007,7 +1007,7 @@ Transform:
   - {fileID: 4716075816949327166}
   - {fileID: 5698718954897147828}
   - {fileID: 5698718954030705513}
-  - {fileID: 1739115582393892160}
+  - {fileID: 1739115582393464064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 0}
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 2
+  syncInterval: 0.1
   clientAuthority: 0
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 2
+  syncInterval: 0.1
   clientAuthority: 0
   animator: {fileID: 5698718955540611101}
 --- !u!114 &-5420889228929754846
@@ -1269,8 +1269,8 @@ MonoBehaviour:
   syncInterval: 0.1
   zombieHit: {fileID: 8300000, guid: f6d764a37220ab94097bd11eea5fa82b, type: 3}
   zombieDead: {fileID: 8300000, guid: e0e02a4b11a3f2f4fa164583a759f6cb, type: 3}
-  bloodParticles: {fileID: 1739115582393892778}
-  ps: {fileID: 1739115582393891365}
+  bloodParticles: {fileID: 1739115582393870422}
+  ps: {fileID: 1739115582374035472}
   currentHealth: 100
 --- !u!114 &3264661822576002289
 MonoBehaviour:
@@ -2885,19 +2885,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de64f5aafeb52544a88c8e557e82d041, type: 3}
---- !u!1 &1739115582393892778 stripped
+--- !u!1 &1739115582393870422 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 120346, guid: de64f5aafeb52544a88c8e557e82d041,
     type: 3}
   m_PrefabInstance: {fileID: 1739115582393892428}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1739115582393892160 stripped
+--- !u!4 &1739115582393464064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494412, guid: de64f5aafeb52544a88c8e557e82d041,
     type: 3}
   m_PrefabInstance: {fileID: 1739115582393892428}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1739115582393891365 stripped
+--- !u!198 &1739115582374035472 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19889756, guid: de64f5aafeb52544a88c8e557e82d041,
     type: 3}

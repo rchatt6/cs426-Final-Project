@@ -5,28 +5,33 @@ using Mirror;
 
 public class Pickup2 : NetworkBehaviour
 {
-    [SyncVar]
+    //[SyncVar]
 	float throwForce = 600;
-	[SyncVar]
+	//[SyncVar]
 	Vector3 objectPos;
-	[SyncVar]
+	//[SyncVar]
 	float distance;
 	
-	[SyncVar]
+	//[SyncVar]
 	public bool canhold = true;
-	[SyncVar]
+	//[SyncVar]
 	public GameObject item;
-	[SyncVar]
+	//[SyncVar]
 	private GameObject tempParent;
-	[SyncVar]
+	//[SyncVar]
 	public bool isHolding = false;
 	
 	void Update ()
 	{
         //Debug.Log("isClient: " + isClient);
 
-        if (!isClient)
-            return;
+        /*if (!isClient)
+            return;*/
+		
+		if (!isServer)
+        {
+            CmdSendPos(objectPos);
+        }
 
         tempParent = GameObject.FindWithTag("Destination");
         //Debug.Log("tempParent: " + tempParent);
@@ -66,8 +71,13 @@ public class Pickup2 : NetworkBehaviour
 		
 		if (Input.GetKeyDown(KeyCode.Mouse2))
         {
-			if (!isClient)
-				return;
+			/*if (!isClient)
+				return;*/
+			
+			if (!isServer)
+			{
+				CmdSendPos(objectPos);
+			}
 
 			if (distance <= 4f)
 			{
@@ -81,13 +91,28 @@ public class Pickup2 : NetworkBehaviour
 		
 		if (Input.GetKeyUp(KeyCode.Mouse2))
         {
-			if (!isClient)
-			return;
+			/*if (!isClient)
+				return;*/
+			
+			if (!isServer)
+			{
+				CmdSendPos(objectPos);
+			}
 
 			isHolding = false;
 			item.GetComponent<Rigidbody>().useGravity = true;
 			//item.GetComponent<Rigidbody>().freezeRotation = true;
 		}
+	}
+	
+	[Command]
+	void CmdSendPos(Vector3 objPos){
+		RpcUpdatePos(objPos);
+	}
+	
+	[ClientRpc]
+	void RpcUpdatePos(Vector3 objPos){
+		objectPos = objPos;
 	}
 	
 	/*void OnMouseDown()

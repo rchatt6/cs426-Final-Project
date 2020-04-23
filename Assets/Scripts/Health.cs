@@ -8,18 +8,19 @@ public class Health : NetworkBehaviour
     public const int maxHealth = 100;
     [SyncVar(hook ="UpdateHealth")]public int currentHealth = maxHealth;
 
-    [SyncVar]
+    //[SyncVar]
 	[SerializeField]
     private Stats health;
-
+	
+	[SyncVar]
     private GameObject respawnPoint;
 
     public static int teamNum;
 
     private void Awake()
     {
-        if (!isLocalPlayer)
-            return;
+        /*if (!isLocalPlayer)
+            return;*/
 
         /*if (NetworkServer.connections.Count % 2 == 0)
         {
@@ -37,8 +38,14 @@ public class Health : NetworkBehaviour
 
     void Start()
     {
-        if (!isLocalPlayer)
-            return;
+        /*if (!isLocalPlayer)
+            return;*/
+		
+		if (!isServer)
+        {
+            CmdSendPlayerHealth(currentHealth);
+			CmdSendPlayerPos(transform.position);
+        }
 
         if (NetworkServer.connections.Count % 2 == 0)
         {
@@ -59,6 +66,26 @@ public class Health : NetworkBehaviour
 
         //Debug.Log("Start!");
     }
+	
+	[Command]
+	void CmdSendPlayerHealth(int currhlth){
+		RpcUpdatePlayerHealth(currhlth);
+	}
+	
+	[ClientRpc]
+	void RpcUpdatePlayerHealth(int currhlth){
+		currentHealth = currhlth;
+	}
+	
+	[Command]
+	void CmdSendPlayerPos(Vector3 objPos){
+		RpcUpdatePlayerPos(objPos);
+	}
+	
+	[ClientRpc]
+	void RpcUpdatePlayerPos(Vector3 objPos){
+		transform.position = objPos;
+	}
 
     public void UpdateHealth(int old, int current)
     {
@@ -69,10 +96,10 @@ public class Health : NetworkBehaviour
     public void TakeDamage(int amount, Collider collider)
     {
 
-        if (!isServer)
+        /*if (!isServer)
         {
             return;
-        }
+        }*/
 
         currentHealth -= amount;
         health.currentVal -= amount;

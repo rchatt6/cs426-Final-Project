@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+//using Mirror;
 
 
-public class ShootingRaycast : NetworkBehaviour
+public class ShootingErrorTesting : MonoBehaviour
 {
 	
 	private int damage = 25;
@@ -14,12 +14,12 @@ public class ShootingRaycast : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!isServer)
+        /*if (!isServer)
         {
-            //CmdSendPlayerHit(hit);
+            CmdSendPlayerHit(hit);
 			CmdSendPlayerCam(camTransform);
 			//CmdSendPlayerCheckifShooting();
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class ShootingRaycast : NetworkBehaviour
         {
             return;
         }*/
-		if (!isServer)
+		/*if (!isServer)
         {
-            //CmdSendPlayerHit(hit);
+            CmdSendPlayerHit(hit);
 			CmdSendPlayerCam(camTransform);
 			//CmdSendPlayerCheckifShooting();
 			//CheckifShooting();
-        }
+        }*/
         CheckifShooting();
     }
 	
@@ -43,9 +43,9 @@ public class ShootingRaycast : NetworkBehaviour
 		/*if(!isLocalPlayer){
 			return;
 		}*/
-		if (!isServer)
+		/*if (!isServer)
         {
-            //CmdSendPlayerHit(hit);
+            CmdSendPlayerHit(hit);
 			CmdSendPlayerCam(camTransform);
 			//CmdSendPlayerCheckifShooting();
 			/*if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -57,7 +57,7 @@ public class ShootingRaycast : NetworkBehaviour
 				}
 			
 			}*/
-        }
+        //}*/
 		
 		if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -74,12 +74,12 @@ public class ShootingRaycast : NetworkBehaviour
 	void CmdSendPlayerHit(RaycastHit hitt){
 		RpcUpdatePlayerHit(hitt);
 	}
-	*
+	
 	[ClientRpc]
 	void RpcUpdatePlayerHit(RaycastHit hitt){
 		hit = hitt;
 	}
-	*/
+	
 	[Command]
 	void CmdSendPlayerCam(Transform cam){
 		RpcUpdatePlayerCam(cam);
@@ -97,7 +97,7 @@ public class ShootingRaycast : NetworkBehaviour
 	[ClientRpc]
 	void RpcUpdateCheckifShooting(){
 		CheckifShooting();
-	}
+	}*/
 	
 	void Shoot(){
 		if(Physics.Raycast(camTransform.TransformPoint(0,0,0.5f), camTransform.forward, out hit, range)){
@@ -108,40 +108,47 @@ public class ShootingRaycast : NetworkBehaviour
 				CmdTellServerWhoWasShot(uIdentity, damage);
 			}
 			
-			if(hit.transform.tag == "Player"){
+			/*if(hit.transform.tag == "Player"){
 				string uIdentity = hit.transform.name;
 				CmdTellServerWhichPlayerWasShot(uIdentity, damage);
-			}
+			}*/
 		}
 	}
 	
-	[Command]
+	//[Command]
 	void CmdTellServerWhoWasShot(string uniqueID, int dmg){
-		/*GameObject go = GameObject.Find(uniqueID);
-		go.GetComponent<NPCHealthRaycast>().TakeDamage(dmg);*/
-		RpcTellClientWhoWasShot(uniqueID, dmg);
-		//Apply dammage to that player
-	}
-	
-	[ClientRpc]
-	void RpcTellClientWhoWasShot(string uniqueID, int dmg){
 		GameObject go = GameObject.Find(uniqueID);
 		go.GetComponent<NPCHealthRaycast>().TakeDamage(dmg);
 		//Apply dammage to that player
 	}
 	
-	[Command]
-	void CmdTellServerWhichPlayerWasShot(string uniqueID, int dmg){
-		/*GameObject go = GameObject.Find(uniqueID);
-		go.GetComponent<NPCHealthRaycast>().TakeDamage(dmg);*/
-		RpcTellClientWhichPlayerWasShot(uniqueID, dmg);
-		//Apply dammage to that player
-	}
+//	[Command]
+//	void CmdTellServerWhoWasShot(string uniqueID, int dmg){
+//		/*GameObject go = GameObject.Find(uniqueID);
+//		go.GetComponent<NPCHealthRaycast>().TakeDamage(dmg);*/
+//		RpcTellClientWhoWasShot(uniqueID, dmg);
+//		//Apply dammage to that player
+//	}
 	
-	[ClientRpc]
+/*	[ClientRpc]
+	void RpcTellClientWhoWasShot(string uniqueID, int dmg){
+		GameObject go = GameObject.Find(uniqueID);
+		go.GetComponent<NPCHealthRaycast>().TakeDamage(dmg);
+		//Apply dammage to that player
+	}*/
+	
+//	[Command]
+//	void CmdTellServerWhichPlayerWasShot(string uniqueID, int dmg){
+//		/*GameObject go = GameObject.Find(uniqueID);
+//		go.GetComponent<NPCHealthRaycast>().TakeDamage(dmg);*/
+//		RpcTellClientWhichPlayerWasShot(uniqueID, dmg);
+//		//Apply dammage to that player
+//	}
+	
+/*	[ClientRpc]
 	void RpcTellClientWhichPlayerWasShot(string uniqueID, int dmg){
 		GameObject go = GameObject.Find(uniqueID);
 		go.GetComponent<Health>().TakeDamage(dmg, go.GetComponent<Collider>());
 		//Apply dammage to that player
-	}
+	}*/
 }
