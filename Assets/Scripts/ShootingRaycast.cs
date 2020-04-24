@@ -116,6 +116,7 @@ public class ShootingRaycast : NetworkBehaviour
 			}
 			
 			if(hit.transform.tag == "Player"){
+				//string uIdentity = hit.transform.name;
 				string uIdentity = hit.transform.name;
 				CmdTellServerWhichPlayerWasShot(uIdentity, damage);
 			}

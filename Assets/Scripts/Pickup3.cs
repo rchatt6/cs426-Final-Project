@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class Pickup2 : NetworkBehaviour
+public class Pickup3 : NetworkBehaviour
 {
     //[SyncVar]
 	float throwForce = 600;
@@ -11,6 +11,9 @@ public class Pickup2 : NetworkBehaviour
 	Vector3 objectPos;
 	//[SyncVar]
 	float distance;
+	
+	/*[SyncVar(hook = "hookOnHeldChanged")]
+	NetworkIdentity m_heldObject;*/
 	
 	//[SyncVar]
 	public bool canhold = true;
@@ -21,10 +24,31 @@ public class Pickup2 : NetworkBehaviour
 	//[SyncVar]
 	public bool isHolding = false;
 	
-	void FixedUpdate ()
+	//NetworkIdentity id = item.GetComponent<NetworkIdentity>();
+	
+	
+	/*[SerializeField]
+	Transform heldParent;
+	void hookOnHeldChanged(NetworkIdentity id)
+	{
+		GameObject heldObj = ClientScene.FindLocalObject(id);
+		heldObj.transform.parent = heldParent;
+	}*/
+	
+	/*[Server]
+	public override void OnStartClient()
+	{
+		this.transform.position = 
+	}*/
+	
+	/*void FixedUpdate ()
     {
-		CmdSendPos(objectPos);
-	}
+		if(!isLocalPlayer){
+			//CmdSendPos(transform.localPosition, transform.localRotation, playerBody.transform.localRotation, physicsRoot.velocity, transform.parent.name);
+		}
+		//CmdSendPos(this.transform.position);
+		//Debug.Log(item.GetComponent<N);
+	}*/
 	
 	void Update ()
 	{
@@ -99,10 +123,10 @@ public class Pickup2 : NetworkBehaviour
 			/*if (!isClient)
 				return;*/
 			
-			if (!isServer)
+			/*if (!isServer)
 			{
 				CmdSendPos(objectPos);
-			}
+			}*/
 
 			isHolding = false;
 			item.GetComponent<Rigidbody>().useGravity = true;
@@ -117,7 +141,7 @@ public class Pickup2 : NetworkBehaviour
 	
 	[ClientRpc]
 	void RpcUpdatePos(Vector3 objPos){
-		objectPos = objPos;
+		this.objectPos = objPos;
 	}
 	
 	/*void OnMouseDown()

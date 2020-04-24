@@ -16,10 +16,10 @@ GameObject:
   - component: {fileID: 2490731992217287383}
   - component: {fileID: 4669575420625853411}
   - component: {fileID: 4253954809023670270}
-  - component: {fileID: 7067941359627072716}
+  - component: {fileID: 719690222879800050}
   m_Layer: 0
   m_Name: Bridge Piece
-  m_TagString: Untagged
+  m_TagString: bridge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
---- !u!114 &7067941359627072716
+--- !u!114 &719690222879800050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5886546227148007708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86f829c33e34e049bfdc4c4c5b2789d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eb121ad62dab3a4f84e52f95f818bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0

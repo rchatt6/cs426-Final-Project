@@ -8,7 +8,6 @@ public class Health : NetworkBehaviour
     public const int maxHealth = 100;
     [SyncVar(hook ="UpdateHealth")]public int currentHealth = maxHealth;
 
-    //[SyncVar]
 	[SerializeField]
     private Stats health;
 	
@@ -19,10 +18,10 @@ public class Health : NetworkBehaviour
 
     private void Awake()
     {
-        /*if (!isLocalPlayer)
-            return;*/
+        if (!isLocalPlayer)
+            return;
 
-        /*if (NetworkServer.connections.Count % 2 == 0)
+        if (NetworkServer.connections.Count % 2 == 0)
         {
             teamNum = 2;
         }
@@ -33,7 +32,7 @@ public class Health : NetworkBehaviour
 
         Debug.Log("Initialized! You are on team " + teamNum +"!");
 
-        health.Initialize();*/
+        health.Initialize();
     }
 
     void Start()
@@ -66,6 +65,12 @@ public class Health : NetworkBehaviour
 
         //Debug.Log("Start!");
     }
+	
+	void FixedUpdate ()
+    {
+		CmdSendPlayerHealth(currentHealth);
+		//CmdSendPlayerPos(transform.position);
+	}
 	
 	[Command]
 	void CmdSendPlayerHealth(int currhlth){
