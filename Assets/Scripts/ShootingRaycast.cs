@@ -6,8 +6,9 @@ using Mirror;
 
 public class ShootingRaycast : NetworkBehaviour
 {
-	
+	[SerializeField]
 	private int damage = 25;
+	[SerializeField]
 	private float range = 200;
 	[SerializeField] private Transform camTransform;
 	private RaycastHit hit;

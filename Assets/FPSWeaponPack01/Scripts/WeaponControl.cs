@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Mirror;
 
-public class WeaponControl : MonoBehaviour {
+public class WeaponControl : NetworkBehaviour {
+	
+	public GameObject myCamera;
+	//myCamera = Camera.main;
 
 	//All the weapons in the inventory
 	public GameObject[] weapons;
+	
 
 	//The position of the current weapon in the weapon array
 	public int cur = 0;
 
 	void Start () {
+		//GameObject.Find("MainCamera").GetComponent<Camera>().enabled = true;
+		myCamera.gameObject.SetActive (true);
 		//Iterate through all weapons and disable all but the current one
 		for (int i=0;i<weapons.Length;i++) {
 			if (i == cur) {
