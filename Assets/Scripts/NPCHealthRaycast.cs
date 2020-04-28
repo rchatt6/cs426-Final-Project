@@ -6,27 +6,35 @@ using UnityEngine.UI;
 
 public class NPCHealthRaycast : NetworkBehaviour
 {
-    private AudioSource m_AudioSource;
+    //[SyncVar]
+	private AudioSource m_AudioSource;
+	//[SyncVar]
     [SerializeField]
     private AudioClip zombieHit;
+	//[SyncVar]
     [SerializeField]
     private AudioClip zombieDead;
     int frame1;
     bool isDying;
+	//[SyncVar]
     Animator anim;
+	//[SyncVar]
     [SerializeField]
     private GameObject bloodParticles;
+	//[SyncVar]
     [SerializeField]
     private ParticleSystem ps;
 
+	//[SyncVar]
     public const int maxHealth = 100;
 	[SyncVar (hook = "OnHealthChanged")] public int currentHealth = maxHealth;
     // Start is called before the first frame update
     void Start()
     {
-        if (!isServer)
+        if (hasAuthority)
         {
-            return;
+            CmdSendNPCHealth(currentHealth);
+			//CmdSendNPCPos(transform.position);
         }
         //bloodParticles.SetActive(false);
         m_AudioSource = GetComponent<AudioSource>();
@@ -35,12 +43,33 @@ public class NPCHealthRaycast : NetworkBehaviour
         isDying = false;
         InvokeRepeating("Update1", 0.2f, 0.2f);
     }
+	
+	[Command]
+	void CmdSendNPCHealth(int currhlth){
+		RpcUpdateNPCHealth(currhlth);
+	}
+	
+	[ClientRpc]
+	void RpcUpdateNPCHealth(int currhlth){
+		currentHealth = currhlth;
+	}
+	
+	[Command]
+	void CmdSendNPCPos(Vector3 pos){
+		RpcUpdateNPCPos(pos);
+	}
+	
+	[ClientRpc]
+	void RpcUpdateNPCPos(Vector3 pos){
+		transform.position = pos;
+	}
 
     void Update1()
     {
-        if (!isServer)
+        if (hasAuthority)
         {
-            return;
+            CmdSendNPCHealth(currentHealth);
+			CmdSendNPCPos(transform.position);
         }
 
         
@@ -56,6 +85,15 @@ public class NPCHealthRaycast : NetworkBehaviour
             frame1++;
         }
     }
+	
+	private void FixedUpdate()
+    {
+        if(!hasAuthority)
+        {
+            return;
+        }
+		CmdSendNPCPos(transform.position);
+	}
 	
 	public void TakeDamage(int amount){
 		

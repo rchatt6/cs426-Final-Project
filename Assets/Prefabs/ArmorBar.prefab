@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  fillAmount: 0
   lerpSpeed: 3
   content: {fileID: 2510507323424717656}
   fullColor: {r: 0.3066038, g: 0.35013595, b: 1, a: 1}

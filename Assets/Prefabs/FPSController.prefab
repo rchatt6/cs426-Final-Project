@@ -526,6 +526,17 @@ PrefabInstance:
       propertyPath: au_shot
       value: 
       objectReference: {fileID: 8300000, guid: f1f5f091ec196b045aba1d223425145f, type: 3}
+    - target: {fileID: 114000010225374976, guid: 10e719182caa182418e55be7e6ca409d,
+        type: 3}
+      propertyPath: CrosshairPrefab
+      value: 
+      objectReference: {fileID: 6444287233912591284, guid: 2dcc25a77f7f162439057d49f439010a,
+        type: 3}
+    - target: {fileID: 114000010225374976, guid: 10e719182caa182418e55be7e6ca409d,
+        type: 3}
+      propertyPath: reloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a0f816562996504686f4940d69bc911, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10e719182caa182418e55be7e6ca409d, type: 3}
 --- !u!4 &681475859680411818 stripped

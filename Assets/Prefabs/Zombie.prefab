@@ -2810,6 +2810,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 751923551866053947}
     m_Modifications:
+    - target: {fileID: -2374101047761953138, guid: de64f5aafeb52544a88c8e557e82d041,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 120346, guid: de64f5aafeb52544a88c8e557e82d041, type: 3}
       propertyPath: m_Name
       value: bloodSplash
