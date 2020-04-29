@@ -76,9 +76,12 @@ public class menuStart : MonoBehaviour
                                                             "Jump - SPACEBAR\n" +
                                                             "Run - SHIFT\n" +
                                                             "Rotate Camera - Mouse\n" +
-                                                            "Fire weapon/Grab Bridge Piece - LMB\n" +
-                                                            "Aim/Throw Bridge Piece - RMB\n" +
-                                                            "Reload - R";
+                                                            "Fire weapon - Left-Mouse\n" +
+                                                            "Aim weapon - Hold Right-Mouse\n" +
+                                                            "Grab Bridge Piece - Hold Middle-Mouse\n" +
+                                                            "Aim/Throw Bridge Piece - Right-Mouse\n" +
+                                                            "Reload - R\n" +
+                                                            "Pause Menu - ESC";
         credits.GetComponent<UnityEngine.UI.Text>().text = "";
 
         playButton.SetActive(false);
@@ -118,13 +121,14 @@ public class menuStart : MonoBehaviour
         story.GetComponent<UnityEngine.UI.Text>().text = "";
         controls.GetComponent<UnityEngine.UI.Text>().text = "";
         credits.GetComponent<UnityEngine.UI.Text>().text = "- UIC CS426 Videogame Design Team -\n" +
-                                                            "Allen Breyer\n" +
                                                             "Rahul Chatterjee\n" +
+                                                            "Allen Breyer\n" +
                                                             "Aakash Kotak\n\n" +
                                                             "- Art & Sounds -\n" +
                                                             "Mixamo (Zombie Model & Animations)\n" +
                                                             "SoundIdeasCom (Footstep SFX)\n" +
-                                                            "AbloomAudio (Zombie SFX)";
+                                                            "AbloomAudio (Zombie SFX)\n" + 
+															"Lots of youtube tutorials!";
 
         playButton.SetActive(false);
         controlsButton.SetActive(false);

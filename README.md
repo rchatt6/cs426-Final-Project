@@ -11,8 +11,9 @@ In the near future a virus by the name of COVID-19 has spread across the globe a
  - Movement - W, A, S, D
  - Jump - SPACEBAR
  - Run - SHIFT
- - Firing weapon & Grab Bridge Piece- LMB
- - Aim - RMB
+ - Firing weapon - LEFT MOUSE BUTTON
+ - Grab Bridge Piece - RIGHT MOUSE BUTTON
+ - Aim - RIGHT MOUSE BUTTON
  - Reload - R
 
 ## Design and Rationale
@@ -53,17 +54,3 @@ Zombies are NPC’s that were soldiers before turning into zombies. Zombies are 
  - Added a gun shot SFX to give audio confirmation to the player that they fired their weapon.
  - Added a fanfare theme when the player wins the game (getting to the other island with the supplies).
 
-## Shader Design
- - Added a blood splatter effect that uses transparency and bump maps to indicate that the zombie took damage from the gun. (Allen)
- - Fog effects enhance the game world’s atmosphere to make it feel more mysterious and dark, and make the world look more realistic. (Aakash)
- - Bridge pieces are not shiny anymore since we changed the texture and removed its specular mapping to make it look more like bridge pieces and match with the world's texture. (Rahul)
- 
- ## Modifications in Response to the Alpha Feedback
- - We labeled the UI bars so that the player can easily tell what each bar is (health, stamina, armor)
- - We scripted a settings menu that includes options for both volume and graphics quality (the graphics quality can be lowered to help with lagging issues on less powerful machines)
- - The playtesters hardly had any interactions with the zombies, so we scripted zombie spawners so that more will appear as time goes on.
- - Fixed zombie colliders so that they don’t slide like crazy or teleport in the water
- - Zombies can now wander around so that they’ll be more likely to engage with the player
- - Zombies can now die when you shoot them and they play a death animation before disappearing
- - Scattered more bridge pieces around so that the player doesn’t finish the game as fast
- - Started implementing networking features which involves players starting on alternative islands when they join
