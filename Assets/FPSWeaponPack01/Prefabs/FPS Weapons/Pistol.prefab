@@ -10182,7 +10182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4000010787654540
 Transform:
   m_ObjectHideFlags: 0
@@ -10212,11 +10212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85ca4ca4e07e6e478edaebc81d34be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  CrosshairPrefab: {fileID: 0}
   au_shot: {fileID: 0}
   magSize: 7
+  mag: 0
   loadType: 0
   rof: 0.15
   automatic: 0

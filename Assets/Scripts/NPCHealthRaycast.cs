@@ -31,7 +31,7 @@ public class NPCHealthRaycast : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!isServer)
+        if (hasAuthority)
         {
             CmdSendNPCHealth(currentHealth);
 			//CmdSendNPCPos(transform.position);
@@ -66,7 +66,7 @@ public class NPCHealthRaycast : NetworkBehaviour
 
     void Update1()
     {
-        if (!isServer)
+        if (hasAuthority)
         {
             CmdSendNPCHealth(currentHealth);
 			CmdSendNPCPos(transform.position);
@@ -88,6 +88,10 @@ public class NPCHealthRaycast : NetworkBehaviour
 	
 	private void FixedUpdate()
     {
+        if(!hasAuthority)
+        {
+            return;
+        }
 		CmdSendNPCPos(transform.position);
 	}
 	

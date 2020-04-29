@@ -6,9 +6,8 @@ using Mirror;
 
 public class ShootingRaycast : NetworkBehaviour
 {
-	[SerializeField]
+	
 	private int damage = 25;
-	[SerializeField]
 	private float range = 200;
 	[SerializeField] private Transform camTransform;
 	private RaycastHit hit;
@@ -25,9 +24,13 @@ public class ShootingRaycast : NetworkBehaviour
 	
 	void FixedUpdate ()
     {
+        if (!hasAuthority)
+        {
+            return;
+        }
         //Debug.Log("FixedUpdate time :" + Time.deltaTime);
-		//CmdSendPlayerCam(camTransform);
-		CmdSendPlayerCheckifShooting();
+        //CmdSendPlayerCam(camTransform);
+        CmdSendPlayerCheckifShooting();
     }
 
     // Update is called once per frame
@@ -117,7 +120,6 @@ public class ShootingRaycast : NetworkBehaviour
 			}
 			
 			if(hit.transform.tag == "Player"){
-				//string uIdentity = hit.transform.name;
 				string uIdentity = hit.transform.name;
 				CmdTellServerWhichPlayerWasShot(uIdentity, damage);
 			}

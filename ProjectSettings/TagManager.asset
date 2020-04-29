@@ -15,8 +15,6 @@ TagManager:
   - Blood
   - Respawn1
   - Respawn2
-  - bridgePiecesSpawn
-  - bridge
   layers:
   - Default
   - TransparentFX

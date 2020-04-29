@@ -12,8 +12,12 @@ public class WeaponScript : NetworkBehaviour {
 	CharacterController co;
 	AudioSource au;
 
-	//Sound played when firing
-	public AudioClip au_shot;
+    private AudioSource m_AudioSource;
+    [SerializeField]
+    private AudioClip reloadSound;
+
+    //Sound played when firing
+    public AudioClip au_shot;
 
 	//Maximum size of the magazine
 	public int magSize = 7;
@@ -73,7 +77,8 @@ public class WeaponScript : NetworkBehaviour {
 		mag = magSize;
 
 		ps = gameObject.GetComponentsInChildren<ParticleSystem> ();
-	}
+        m_AudioSource = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -158,7 +163,7 @@ public class WeaponScript : NetworkBehaviour {
 			//Start reloading when the R key is pressed
 			if (Input.GetKey (KeyCode.R)) {
 				reloading = true;
-			}
+            }
 			//We want to keep reloading if the key is released, however
 
 			//If there magazine is full, or there are any interruptions, stop reloading
@@ -210,8 +215,11 @@ public class WeaponScript : NetworkBehaviour {
 		//Refil the magazine
 		mag = magSize;
 
-		//Update the empty magazine animation
-		NoAmmo (false);
+        m_AudioSource.clip = reloadSound;
+        m_AudioSource.Play();
+
+        //Update the empty magazine animation
+        NoAmmo (false);
 	}
 
 	public void LoadSingle () {

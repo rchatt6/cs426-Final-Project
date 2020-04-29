@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
+using UnityEngine.UI;
 
 public class Health : NetworkBehaviour
 {
     public const int maxHealth = 100;
-    [SyncVar(hook ="UpdateHealth")]public int currentHealth = maxHealth;
+    [SyncVar(hook = "UpdateHealth")]
+    public int currentHealth = maxHealth;
 
-	[SerializeField]
+    [SerializeField]
     private Stats health;
-	
-	[SyncVar]
+
+    //public Text healthText;
+
+    [SyncVar]
     private GameObject respawnPoint;
 
     public static int teamNum;
@@ -30,7 +36,7 @@ public class Health : NetworkBehaviour
             teamNum = 1;
         }
 
-        Debug.Log("Initialized! You are on team " + teamNum +"!");
+        Debug.Log("Initialized! You are on team " + teamNum + "!");
 
         health.Initialize();
     }
@@ -39,11 +45,11 @@ public class Health : NetworkBehaviour
     {
         /*if (!isLocalPlayer)
             return;*/
-		
-		if (!isServer)
+
+        if (!isServer)
         {
             CmdSendPlayerHealth(currentHealth);
-			CmdSendPlayerPos(transform.position);
+            CmdSendPlayerPos(transform.position);
         }
 
         if (NetworkServer.connections.Count % 2 == 0)
@@ -61,41 +67,64 @@ public class Health : NetworkBehaviour
 
         currentHealth = maxHealth;
         health.MaxVal = maxHealth;
-        health.currentVal = maxHealth;
+        //healthText.text = currentHealth;
 
         //Debug.Log("Start!");
     }
-	
-	void FixedUpdate ()
+
+    void FixedUpdate()
     {
-		CmdSendPlayerHealth(currentHealth);
-		//CmdSendPlayerPos(transform.position);
-	}
-	
-	[Command]
-	void CmdSendPlayerHealth(int currhlth){
-		RpcUpdatePlayerHealth(currhlth);
-	}
-	
-	[ClientRpc]
-	void RpcUpdatePlayerHealth(int currhlth){
-		currentHealth = currhlth;
-	}
-	
-	[Command]
-	void CmdSendPlayerPos(Vector3 objPos){
-		RpcUpdatePlayerPos(objPos);
-	}
-	
-	[ClientRpc]
-	void RpcUpdatePlayerPos(Vector3 objPos){
-		transform.position = objPos;
-	}
+        CmdSendPlayerHealth(currentHealth);
+        //CmdSendPlayerPos(transform.position);
+    }
+
+    [Command]
+    void CmdSendPlayerHealth(int currhlth)
+    {
+        RpcUpdatePlayerHealth(currhlth);
+    }
+
+    [ClientRpc]
+    void RpcUpdatePlayerHealth(int currhlth)
+    {
+        currentHealth = currhlth;
+    }
+
+    [Command]
+    void CmdSendPlayerPos(Vector3 objPos)
+    {
+        RpcUpdatePlayerPos(objPos);
+    }
+
+    [ClientRpc]
+    void RpcUpdatePlayerPos(Vector3 objPos)
+    {
+        transform.position = objPos;
+    }
 
     public void UpdateHealth(int old, int current)
     {
         //old = current;
         current = old;
+    }
+
+    public void GainHealth(int amount, Collider collider)
+    {
+        if (currentHealth < 100)
+        {
+            currentHealth += amount;
+            health.currentVal += amount;
+            //healthText.text = health.currentVal;
+        }
+
+        Debug.Log(currentHealth);
+
+        if (currentHealth >= 100)
+        {
+            currentHealth = 100;
+            health.currentVal = 100;
+            //healthText.text = health.currentVal;
+        }
     }
 
     public void TakeDamage(int amount, Collider collider)
@@ -108,6 +137,7 @@ public class Health : NetworkBehaviour
 
         currentHealth -= amount;
         health.currentVal -= amount;
+        //healthText.text = health.currentVal;
 
         Debug.Log(currentHealth);
 
@@ -124,7 +154,7 @@ public class Health : NetworkBehaviour
             {
                 respawnPoint = GameObject.FindGameObjectWithTag("Respawn2");
             }
-            
+
             collider.transform.position = respawnPoint.transform.position;
             currentHealth = 100;
             health.currentVal = 100;

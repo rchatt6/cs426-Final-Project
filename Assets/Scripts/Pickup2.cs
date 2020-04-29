@@ -6,7 +6,7 @@ using Mirror;
 public class Pickup2 : NetworkBehaviour
 {
     //[SyncVar]
-	float throwForce = 600;
+	public float throwForce = 400;
 	//[SyncVar]
 	Vector3 objectPos;
 	//[SyncVar]
@@ -20,23 +20,29 @@ public class Pickup2 : NetworkBehaviour
 	private GameObject tempParent;
 	//[SyncVar]
 	public bool isHolding = false;
-	
-	void FixedUpdate ()
+
+    void Start()
     {
-		CmdSendPos(objectPos);
-	}
-	
-	void Update ()
+        if (!isServer)
+        {
+            return;
+        }
+
+
+        item.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    }
+
+    void Update ()
 	{
         //Debug.Log("isClient: " + isClient);
 
         /*if (!isClient)
             return;*/
 		
-		/*if (!isServer)
+		if (!isServer)
         {
             CmdSendPos(objectPos);
-        }*/
+        }
 
         tempParent = GameObject.FindWithTag("Destination");
         //Debug.Log("tempParent: " + tempParent);
@@ -47,6 +53,7 @@ public class Pickup2 : NetworkBehaviour
             if (distance >= 4f)
             {
                 isHolding = false;
+                item.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
             //Check of isHolding
             if (isHolding == true)
@@ -61,6 +68,9 @@ public class Pickup2 : NetworkBehaviour
                     //throw
                     item.GetComponent<Rigidbody>().AddForce(tempParent.transform.forward * throwForce);
                     isHolding = false;
+
+                    //make bridge piece semi-transparent
+                    item.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 }
             }
 
@@ -69,6 +79,7 @@ public class Pickup2 : NetworkBehaviour
                 objectPos = item.transform.position;
                 item.transform.SetParent(null);
                 item.GetComponent<Rigidbody>().useGravity = true;
+                item.GetComponent<BoxCollider>().enabled = true;
                 item.transform.position = objectPos;
             }
         }
@@ -79,19 +90,23 @@ public class Pickup2 : NetworkBehaviour
 			/*if (!isClient)
 				return;*/
 			
-			/*if (!isServer)
+			if (!isServer)
 			{
 				CmdSendPos(objectPos);
-			}*/
+			}
 
 			if (distance <= 4f)
 			{
 				isHolding = true;
 				item.GetComponent<Rigidbody>().useGravity = false;
 				item.GetComponent<Rigidbody>().detectCollisions = true;
-				//item.GetComponent<Rigidbody>().freezeRotation = false;
-				//item.GetComponent<Rigidbody>().isKinematic = true;
-			}
+                item.GetComponent<BoxCollider>().enabled = false;
+
+                item.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+
+                //item.GetComponent<Rigidbody>().freezeRotation = false;
+                //item.GetComponent<Rigidbody>().isKinematic = true;
+            }
 		}
 		
 		if (Input.GetKeyUp(KeyCode.Mouse2))
@@ -106,8 +121,11 @@ public class Pickup2 : NetworkBehaviour
 
 			isHolding = false;
 			item.GetComponent<Rigidbody>().useGravity = true;
-			//item.GetComponent<Rigidbody>().freezeRotation = true;
-		}
+            item.GetComponent<BoxCollider>().enabled = true;
+
+            item.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            //item.GetComponent<Rigidbody>().freezeRotation = true;
+        }
 	}
 	
 	[Command]

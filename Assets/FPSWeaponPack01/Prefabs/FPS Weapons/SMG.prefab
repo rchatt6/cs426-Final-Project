@@ -11367,11 +11367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85ca4ca4e07e6e478edaebc81d34be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  CrosshairPrefab: {fileID: 0}
   au_shot: {fileID: 0}
   magSize: 30
+  mag: 0
   loadType: 0
   rof: 0.1
   automatic: 1
